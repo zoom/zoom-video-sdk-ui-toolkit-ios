@@ -5,7 +5,9 @@
 //  Created by Boon Jun Tan on 25/4/23.
 //
 
+#if os(iOS)
 import UIKit
+#endif
 import ZoomVideoSDK
 
 public class ZoomVideoViewer: UIView {
