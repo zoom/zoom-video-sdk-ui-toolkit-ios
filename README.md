@@ -23,6 +23,16 @@ Currently, the Zoom Video SDK UI Toolkit is available through Swift Package Mana
 https://github.com/zoom/zoom-video-sdk-ui-toolkit-ios.git
 ```
 
+## Required App Permissions
+
+In order for the camera and mic to work during the session, add the following:
+
+| Permission Required | Optional | Permission Key | Description |
+| :------------------ | :------- | :------------- | :---------- |
+| Camera              | Required | NSCameraUsageDescription | Required for Video |
+| Microphone          | Required | NSMicrophoneUsageDescription | Required for Audio |
+| Bluetooth           | Required | NSBluetoothPeripheralUsageDescription | Required for Bluetooth audio devices |
+
 <br>
 
 ## Usage
@@ -44,7 +54,7 @@ let connectionData = ZoomConnectionData(jwtToken:String, sessionName: String, se
 
 ### Step 2. Create the Zoom Video View Controller and present it
 
-Create the ZoomVideoVC that takes in the **connectionData** created earlier.
+Create the ZoomVideoVC that takes in the **connectionData** and present it.
 
 ```Swift
 let zoomVideoToolkitVC = ZoomVideoVC(connectionData: zoomConnectionData)
