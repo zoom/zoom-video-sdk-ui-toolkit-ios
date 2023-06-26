@@ -1,0 +1,103 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ZoomVideoSDKUIToolkit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import MediaPlayer
+import Swift
+import UIKit
+import ZoomVideoSDK
+import _Concurrency
+import _StringProcessing
+public struct ZoomConnectionData {
+  public var jwtToken: Swift.String
+  public var sessionName: Swift.String
+  public var sessionPassword: Swift.String?
+  public var userName: Swift.String
+  public init(jwtToken: Swift.String, sessionName: Swift.String, sessionPassword: Swift.String? = nil, userName: Swift.String)
+}
+public enum ZoomVideoUIToolkitError : Swift.Int {
+  case Errors_Auth_Empty_Key_or_Secret
+  case Errors_Auth_Wrong_Key_or_Secret
+  case Errors_JoinSession_NoSessionName
+  case Errors_JoinSession_NoSessionToken
+  case Errors_JoinSession_Token_NoSessionName
+  case Errors_JoinSession_NoUserName
+  case Errors_JoinSession_Invalid_SessionName
+  case Errors_JoinSession_Invalid_Password
+  case Errors_JoinSession_Invalid_SessionToken
+  case Errors_Session_Need_Password
+  case Errors_JoinSession_SessionName_TooLong
+  case Errors_JoinSession_Token_MismatchedSessionName
+  case Errors_JoinSession_Token_UserIdentity_TooLong
+  case Errors_Session_Invalid_Param
+  case Errors_Session_Join_Failed
+  case Errors_Session_Audio_No_Microphone
+  case Errors_Session_Video_Device_Error
+  case Errors_Switch_Video_Failed
+  case Errors_Leave_Session_Failed
+  case Errors_Mute_Mic_Failed
+  case Errors_Unmute_Mic_Failed
+  case Errors_Start_Video_Failed
+  case Errors_Stop_Video_Failed
+  case Errors_Send_ChatMessage_Failed
+  public var description: (Swift.String) {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct ZoomVideoViewerSettings {
+  public init()
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class ZoomVideoVC : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any ZoomVideoSDKUIToolkit.ZoomVideoViewerDelegate)?
+  @_Concurrency.MainActor(unsafe) public init(connectionData: ZoomVideoSDKUIToolkit.ZoomConnectionData)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) public func fitLayoutTo(view parentView: UIKit.UIView)
+  @objc deinit
+}
+extension ZoomVideoSDKUIToolkit.ZoomVideoVC : ZoomVideoSDKDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onError(_ ErrorType: ZoomVideoSDKError, detail details: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionNeedPassword(_ completion: ((Swift.String?, Swift.Bool) -> ZoomVideoSDKError)? = nil)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionPasswordWrong(_ completion: ((Swift.String?, Swift.Bool) -> ZoomVideoSDKError)? = nil)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionJoin()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionLeave()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserAudioStatusChanged(_ helper: ZoomVideoSDKAudioHelper?, user userArray: [ZoomVideoSDKUser]?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserVideoStatusChanged(_ helper: ZoomVideoSDKVideoHelper?, user userArray: [ZoomVideoSDKUser]?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserActiveAudioChanged(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserJoin(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserLeave(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onChatNewMessageNotify(_ helper: ZoomVideoSDKChatHelper?, message chatMessage: ZoomVideoSDKChatMessage?)
+}
+extension ZoomVideoSDKUIToolkit.ZoomVideoVC : UIKit.UITableViewDelegate, UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, heightForHeaderInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, estimatedHeightForRowAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGFloat
+}
+extension ZoomVideoSDKUIToolkit.ZoomVideoVC : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+}
+public protocol ZoomVideoViewerDelegate : AnyObject {
+  func onError(_ errorType: ZoomVideoSDKUIToolkit.ZoomVideoUIToolkitError)
+  func onViewLoaded(success: Swift.Bool)
+  func onViewDismissed(success: Swift.Bool)
+}
+extension ZoomVideoSDKUIToolkit.ZoomVideoViewerDelegate {
+  public func onError(_ errorType: ZoomVideoSDKUIToolkit.ZoomVideoUIToolkitError)
+  public func onViewLoaded(success: Swift.Bool)
+  public func onViewDismissed(success: Swift.Bool)
+}
+extension ZoomVideoSDKUIToolkit.ZoomVideoUIToolkitError : Swift.Equatable {}
+extension ZoomVideoSDKUIToolkit.ZoomVideoUIToolkitError : Swift.Hashable {}
+extension ZoomVideoSDKUIToolkit.ZoomVideoUIToolkitError : Swift.RawRepresentable {}
