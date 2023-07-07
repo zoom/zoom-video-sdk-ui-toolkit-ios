@@ -285,14 +285,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-
-
 @class NSCoder;
 @class NSString;
 @class NSBundle;
 
-SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
-@interface ZoomVideoVC : UIViewController
+SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
+@interface UIToolkitVC : UIViewController
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -303,7 +301,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 
 @class UITextField;
 
-@interface ZoomVideoVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITextFieldDelegate>
+@interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITextFieldDelegate>
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -311,7 +309,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 @class NSIndexPath;
 @class UITableViewCell;
 
-@interface ZoomVideoVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITableViewDataSource, UITableViewDelegate>
+@interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITableViewDataSource, UITableViewDelegate>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
@@ -326,7 +324,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 @class ZoomVideoSDKChatHelper;
 @class ZoomVideoSDKChatMessage;
 
-@interface ZoomVideoVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <ZoomVideoSDKDelegate>
+@interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <ZoomVideoSDKDelegate>
 - (void)onError:(ZoomVideoSDKError)ErrorType detail:(NSInteger)details;
 - (void)onSessionNeedPassword:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable, BOOL))completion;
 - (void)onSessionPasswordWrong:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable, BOOL))completion;
@@ -339,6 +337,8 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 - (void)onUserLeave:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onChatNewMessageNotify:(ZoomVideoSDKChatHelper * _Nullable)helper message:(ZoomVideoSDKChatMessage * _Nullable)chatMessage;
 @end
+
+
 
 #endif
 #if defined(__cplusplus)
@@ -635,14 +635,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-
-
 @class NSCoder;
 @class NSString;
 @class NSBundle;
 
-SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
-@interface ZoomVideoVC : UIViewController
+SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
+@interface UIToolkitVC : UIViewController
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -653,7 +651,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 
 @class UITextField;
 
-@interface ZoomVideoVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITextFieldDelegate>
+@interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITextFieldDelegate>
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -661,7 +659,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 @class NSIndexPath;
 @class UITableViewCell;
 
-@interface ZoomVideoVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITableViewDataSource, UITableViewDelegate>
+@interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <UITableViewDataSource, UITableViewDelegate>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
@@ -676,7 +674,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 @class ZoomVideoSDKChatHelper;
 @class ZoomVideoSDKChatMessage;
 
-@interface ZoomVideoVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <ZoomVideoSDKDelegate>
+@interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <ZoomVideoSDKDelegate>
 - (void)onError:(ZoomVideoSDKError)ErrorType detail:(NSInteger)details;
 - (void)onSessionNeedPassword:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable, BOOL))completion;
 - (void)onSessionPasswordWrong:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable, BOOL))completion;
@@ -689,6 +687,8 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11ZoomVideoVC")
 - (void)onUserLeave:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onChatNewMessageNotify:(ZoomVideoSDKChatHelper * _Nullable)helper message:(ZoomVideoSDKChatMessage * _Nullable)chatMessage;
 @end
+
+
 
 #endif
 #if defined(__cplusplus)
