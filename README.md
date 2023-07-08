@@ -52,28 +52,18 @@ let sessionContext = SessionContext(jwt: String, sessionName: String, sessionPas
 
 ### Step 2. Create the Zoom Video View Controller and present it
 
-Create the UIToolkitVC that takes in the **sessionContext** and present it.
+Create the **UIToolkitVC** that takes in the **sessionContext** and present it.
 
 ```Swift
-// If your session requires password, you will need to add it under the sessionPassword parameter under SessionContext.
-// let vc = UIToolkitVC(sessionContext: SessionContext(jwt: jwt, sessionName: sessionName, sessionPassword: password, username: username))
-
-let vc = UIToolkitVC(sessionContext: SessionContext(jwt: jwt, sessionName: sessionName, username: username))
-vc.delegate = self
-vc.modalPresentationStyle = .fullScreen
-present(vc, animated: true)
-
 let vc = UIToolkitVC(sessionContext: sessionContext)
 vc.delegate = self
 vc.modalPresentationStyle = .fullScreen
 present(toolkitVC, animated: true)
-
 ```
 
 ### Step 3. Delegate
 
-There is a delegate class UIToolkitDelegate which consists of important callbacks such as error, view is loaded and dismissed.
-
+There is a delegate class **UIToolkitDelegate** which consists of important callbacks such as error, view is loaded and dismissed.
 
 ```Swift
 extension YourViewController: UIToolkitDelegate {
