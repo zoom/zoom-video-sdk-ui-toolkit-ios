@@ -16,7 +16,7 @@ The use of this UI Took Kit is subject to the [beta program terms of use](https:
 Currently, the Zoom Video SDK UI toolkit is available through Swift Package Manager.
 
 ```
-https://github.com/zoom/zoom-video-sdk-ui-toolkit-ios.git
+https://github.com/zoom/video-sdk-ui-toolkit-ios.git
 ```
 
 ## Required App Permissions
