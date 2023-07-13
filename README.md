@@ -1,8 +1,8 @@
-# Zoom's Video SDK UI Toolkit
+# Zoom Video SDK UI toolkit
 
-The Zoom Video SDK UI Toolkit is a prebuilt video chat user interface powered by the Zoom Video SDK.
+The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
 
-The use of this UI Took Kit is subject to the [Video SDK terms of use](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2023 Zoom Video Communications, Inc. All rights reserved.
+The use of this UI Took Kit is subject to the [beta program terms of use](https://explore.zoom.us/en/beta-terms-and-conditions/) and the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2023 Zoom Video Communications, Inc. All rights reserved.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ The use of this UI Took Kit is subject to the [Video SDK terms of use](https://e
 
 ## Installation
 
-Currently, the Zoom Video SDK UI Toolkit is available through Swift Package Manager and will also be available in Cocoapod soon.
+Currently, the Zoom Video SDK UI toolkit is available through Swift Package Manager.
 
 ```
 https://github.com/zoom/zoom-video-sdk-ui-toolkit-ios.git
@@ -37,11 +37,11 @@ See the [Video SDK Auth Endpoint Sample](https://github.com/zoom/videosdk-sample
 
 ## Usage
 
-After understanding the authorization process, we can simply add Zoom Video SDK UI Toolkit into your View Controller by following the 3 steps below.
+After understanding the authorization process, we can simply add Zoom Video SDK UI toolkit into your View Controller by following the 3 steps below.
 
 ### Step 1. Create the SessionContext
 
-Create the **SessionContext** that takes in the required parameters such as JWT, session name and username (display name). If your session requires password, you can make use of the password parameter.
+Create the **SessionContext** that takes in the required parameters such as JWT, session name and username (display name). If your session requires a password, you can use the password parameter.
 
 ```Swift
 let sessionContext = SessionContext(jwt: String, sessionName: String, username: String)
@@ -80,6 +80,8 @@ extension YourViewController: UIToolkitDelegate {
     }
 }
 ```
+
+See the [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) documentation for more.
 
 ## Need help?
 

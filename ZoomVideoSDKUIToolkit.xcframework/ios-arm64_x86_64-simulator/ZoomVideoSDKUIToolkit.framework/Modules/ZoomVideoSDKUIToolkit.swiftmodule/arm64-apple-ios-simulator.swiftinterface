@@ -53,16 +53,16 @@ public enum UIToolkitError : Swift.Int {
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class UIToolkitVC : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) weak public var delegate: (any ZoomVideoSDKUIToolkit.UIToolkitDelegate)?
   @_Concurrency.MainActor(unsafe) public init(sessionContext: ZoomVideoSDKUIToolkit.SessionContext)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+   @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
     @objc get
   }
   @_Concurrency.MainActor(unsafe) public func fitLayoutTo(view parentView: UIKit.UIView)
   @objc deinit
 }
-extension ZoomVideoSDKUIToolkit.UIToolkitVC : ZoomVideoSDKDelegate {
+ extension ZoomVideoSDKUIToolkit.UIToolkitVC : ZoomVideoSDKDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onError(_ ErrorType: ZoomVideoSDKError, detail details: Swift.Int)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionNeedPassword(_ completion: ((Swift.String?, Swift.Bool) -> ZoomVideoSDKError)? = nil)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionPasswordWrong(_ completion: ((Swift.String?, Swift.Bool) -> ZoomVideoSDKError)? = nil)
@@ -75,14 +75,14 @@ extension ZoomVideoSDKUIToolkit.UIToolkitVC : ZoomVideoSDKDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserLeave(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onChatNewMessageNotify(_ helper: ZoomVideoSDKChatHelper?, message chatMessage: ZoomVideoSDKChatMessage?)
 }
-extension ZoomVideoSDKUIToolkit.UIToolkitVC : UIKit.UITableViewDelegate, UIKit.UITableViewDataSource {
+ extension ZoomVideoSDKUIToolkit.UIToolkitVC : UIKit.UITableViewDelegate, UIKit.UITableViewDataSource {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
   @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
   @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
   @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, heightForHeaderInSection section: Swift.Int) -> CoreFoundation.CGFloat
   @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, estimatedHeightForRowAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGFloat
 }
-extension ZoomVideoSDKUIToolkit.UIToolkitVC : UIKit.UITextFieldDelegate {
+ extension ZoomVideoSDKUIToolkit.UIToolkitVC : UIKit.UITextFieldDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
 }
 public protocol UIToolkitDelegate : AnyObject {

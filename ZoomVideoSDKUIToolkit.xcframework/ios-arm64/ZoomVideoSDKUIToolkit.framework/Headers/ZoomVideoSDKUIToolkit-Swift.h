@@ -289,6 +289,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSString;
 @class NSBundle;
 
+/// The UI toolkit view controller manages and shows the prebuilt video chat user interface.
 SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 @interface UIToolkitVC : UIViewController
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
