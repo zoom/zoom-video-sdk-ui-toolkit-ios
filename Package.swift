@@ -13,6 +13,9 @@ let package = Package(
         .library(
             name: "ZoomVideoSDKUIToolkit-iOS",
             targets: ["ZoomVideoSDK", "ZoomVideoSDKUIToolkit"]),
+        .library(
+            name: "Zoomcml",
+            targets: ["zoomcml"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -27,5 +30,8 @@ let package = Package(
         .binaryTarget(
             name: "ZoomVideoSDKUIToolkit",
             path: "ZoomVideoSDKUIToolkit.xcframework"),
+        .binaryTarget(
+            name: "zoomcml",
+            path: "zoomcml.xcframework"),
     ]
 )
