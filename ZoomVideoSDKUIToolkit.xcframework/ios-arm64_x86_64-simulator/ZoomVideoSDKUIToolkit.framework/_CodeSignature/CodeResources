@@ -14,7 +14,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		9/xJNpxM6r2DGcbGdPzdCs5Arog=
+		3k6/YEmQJ3vF6qlvC8D9MYMg9j4=
 		</data>
 		<key>ChatTableViewCell.nib</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>CustomAlertBox.nib</key>
 		<data>
-		lKBVYWV3GVLYk4xZHGRn05swg1E=
+		vltckeb6n/31/L8lvzhJV21XVss=
 		</data>
 		<key>CustomBottomSheetCTAView.nib</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>Headers/ZoomVideoSDKUIToolkit-Swift.h</key>
 		<data>
-		mRW6uaYtKCCd0k0XzYrcrrpzKwA=
+		dM1RHA8dB7VSo1N/4XSvh1mp7Nk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		rFiDWCntfAOTq6wI1CjdGX4o0/M=
+		Mq4VuYXNQvAdRo4o+V88eQHzBvE=
 		</data>
 		<key>Loader.nib</key>
 		<data>
@@ -54,43 +54,43 @@
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		yw5csUVeJ7I5dqTaOaKBHjCnyOI=
+		1guGhLgmagI4kg30V+p71VK7X6Y=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		6o4Hl46jXwFtdkzHJvZa1Y3fy9s=
+		ra/ig56M6Ocr/mDqjYaMk0MfezE=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		VrDneiP61cSp4qAYmyK2JsoF898=
+		bG8bNqmiYrUa3a7In/7A36Oopm8=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		6o4Hl46jXwFtdkzHJvZa1Y3fy9s=
+		ra/ig56M6Ocr/mDqjYaMk0MfezE=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		y8p9D6JpNoTSh+RhJ+3Q/gICmx0=
+		YpW05yI+ldjeXLjITmSuoBGp2Ik=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		yw5csUVeJ7I5dqTaOaKBHjCnyOI=
+		1guGhLgmagI4kg30V+p71VK7X6Y=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		KvP9yb+hY4dbJVNw44lUAOWqepk=
+		fDPuIaTZN1xRnDpKLO0zEBW7eNk=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Yq4S7dln4ealN/jaBgHb0IlkK7Y=
+		kKXtf2xEK2Vr9tqPLs3swgNCThg=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		KvP9yb+hY4dbJVNw44lUAOWqepk=
+		fDPuIaTZN1xRnDpKLO0zEBW7eNk=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		rBedmo6HJw12W8T3aJ3baRj7SM8=
+		BoV0EEIpxv8FztMZknso7Z6/9X4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -161,7 +161,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			c5XqC6zgRorOvZEeY2W+3g1RfIlrkVP5g+nLciblhCA=
+			Cfk0M/YhwuPZFJqERnPM87rDByo+TN1vdhtahuy1DGM=
 			</data>
 		</dict>
 		<key>ChatTableViewCell.nib</key>
@@ -189,7 +189,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ddTs+LtR7+Rkua+Flsw1sj88ZkdG/sLfVTxUMV+W/Mk=
+			MQGcuG0PKZTLUNEnUUeFBX895KPCpFYMu0Fp8M3Xvf4=
 			</data>
 		</dict>
 		<key>CustomBottomSheetCTAView.nib</key>
@@ -210,7 +210,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KLip9QgEKqgrovaRjSODXAXjCuKFfsLjejnSM8jrVww=
+			SZZlpQIcCX39XLb2RE1HKMv6Lg4e4tvlWGWC0CpqQmk=
 			</data>
 		</dict>
 		<key>Loader.nib</key>
@@ -224,70 +224,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			395+aDp12ejZbM/TCQtUc8r18IQ8V9PG5jJnPVfN2/U=
+			E5KuTivyLGKd7COxIjhRdQ0wYN98ZOybH/U+GCOMB8M=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GvUmj7WdRXJJZRDM2xJVzD/g4PlqY9VxN/Iqr7UCg7g=
+			GJIA4hk9EnUSh402TSPQl0oOBjZ2L/xGyJig457TGmQ=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DzL0xOPWkbMmK0sjg1lOCtsdq08e8sfx4aCSjDyhj44=
+			BwegygIXCeDbWxrWFI4l7xhopfX9Xk07p7JJiUvM4r8=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GvUmj7WdRXJJZRDM2xJVzD/g4PlqY9VxN/Iqr7UCg7g=
+			GJIA4hk9EnUSh402TSPQl0oOBjZ2L/xGyJig457TGmQ=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z3dbq7XRB1eFAa++JwBR02KXeWnwQxHW1eim8HKEfvE=
+			kTAsbnina5JlMKpLiNMDX4TqYT87jjI3YwPvqQEXvVw=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			395+aDp12ejZbM/TCQtUc8r18IQ8V9PG5jJnPVfN2/U=
+			E5KuTivyLGKd7COxIjhRdQ0wYN98ZOybH/U+GCOMB8M=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			25GE6oSa8n9rkvYv5Q+e6/+3/BH+E5aCDUjXLGp13xM=
+			+DWBPjTfb0jqWqugZlRj8Pb+mNBkkYzEzMzDAofSXjk=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X+RJjewgoeiYaX6hVPZFZT3dBfaqZ9m1UjxZQMf7DnM=
+			ay2PpLMVnkLXk56KztSVDEiblQRdBRxPeB9mXex55vE=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			25GE6oSa8n9rkvYv5Q+e6/+3/BH+E5aCDUjXLGp13xM=
+			+DWBPjTfb0jqWqugZlRj8Pb+mNBkkYzEzMzDAofSXjk=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SC2JLIgU92gmp8R1jrFcI/FPzMwwFCnVa+Ct4R3RSqw=
+			ziQX+tAqEcb8poe6+Lz0MMwygQCqM5vxR+zB/BQYCjI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
