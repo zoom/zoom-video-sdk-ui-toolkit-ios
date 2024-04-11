@@ -2,18 +2,29 @@
 
 The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
 
-The use of this UI Took Kit is subject to the [beta program terms of use](https://explore.zoom.us/en/beta-terms-and-conditions/) and the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2023 Zoom Video Communications, Inc. All rights reserved.
+The UI toolkit enables you to instantly start using a core set of Video SDK features in your app, including:
+- Join and leave sessions
+- Video on or off
+- Front or back camera
+- Mute and unmute
+- Session chat (group and private)
+- Active speaker and gallery view
+- Participant management (by host and manager roles)
+- Virtual background
+- Portrait and Landscape support
+
+The use of this UI Took Kit is subject to the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
 
 ## Prerequisites
 
 - Xcode
 - A physical 64-bit iOS device (iPhone or iPad) with iOS version 11.0+
-- A Zoom account with Video SDK credentials
 - A validated provisioning profile certificate
+- A [Video SDK developer account](https://developers.zoom.us/docs/video-sdk/developer-accounts/) with credentials
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available through Swift Package Manager.
+Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapod. The current branch you are viewing right now is the *essential* branch and we do have another branch named *main* that consists of all 3 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background feature, you can use the *essential* branch instead of the *main* branch.
 
 ```
 https://github.com/zoom/videosdk-ui-toolkit-ios.git
@@ -21,7 +32,7 @@ https://github.com/zoom/videosdk-ui-toolkit-ios.git
 
 ## Required App Permissions
 
-In order for the camera and mic to work during the session, add the following:
+For the camera and mic to work during the session, add the following:
 
 | Permission Required | Optional | Permission Key | Description |
 | :------------------ | :------- | :------------- | :---------- |
@@ -37,7 +48,7 @@ See the [Video SDK Auth Endpoint Sample](https://github.com/zoom/videosdk-sample
 
 ## Usage
 
-After understanding the authorization process, we can simply add Zoom Video SDK UI toolkit into your View Controller by following the 3 steps below.
+After understanding the authorization process, we can simply add the Zoom Video SDK UI toolkit to your View Controller by following the 3 steps below.
 
 ### Step 1. Create the SessionContext
 
@@ -91,4 +102,4 @@ If you're looking for help, try [Developer Support](https://devsupport.zoom.us/h
 
 ---
 
-Copyright 2023 Zoom Video Communications, Inc. All rights reserved.
+Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
