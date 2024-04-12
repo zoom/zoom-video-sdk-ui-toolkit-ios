@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="SettingTitleButtonTableViewCell" customModule="ZoomVideoSDKUIToolkit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-rg-bdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDm-bE-Fnf">
+                                <rect key="frame" x="8" y="17.666666666666668" width="41.333333333333336" height="21.000000000000004"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLG-C2-o6B">
+                                <rect key="frame" x="259.66666666666669" y="7" width="67.333333333333314" height="42"/>
+                                <color key="tintColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Assign">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onClickCallToActionBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ETk-FT-50S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HDm-bE-Fnf" firstAttribute="leading" secondItem="LIc-rg-bdJ" secondAttribute="leading" constant="8" id="Bq9-LB-OBI"/>
+                            <constraint firstItem="VLG-C2-o6B" firstAttribute="centerY" secondItem="LIc-rg-bdJ" secondAttribute="centerY" id="Jy7-U2-ZtM"/>
+                            <constraint firstItem="VLG-C2-o6B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HDm-bE-Fnf" secondAttribute="trailing" constant="8" id="Lro-ML-Dbw"/>
+                            <constraint firstItem="HDm-bE-Fnf" firstAttribute="centerY" secondItem="LIc-rg-bdJ" secondAttribute="centerY" id="WkM-Np-DVi"/>
+                            <constraint firstAttribute="height" constant="56" id="mzy-YL-Icy"/>
+                            <constraint firstItem="VLG-C2-o6B" firstAttribute="height" secondItem="LIc-rg-bdJ" secondAttribute="height" multiplier="0.75" id="wXY-EV-plr"/>
+                            <constraint firstAttribute="trailing" secondItem="VLG-C2-o6B" secondAttribute="trailing" constant="8" id="yeW-eH-At8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="LIc-rg-bdJ" secondAttribute="bottom" id="dYj-em-cy8"/>
+                    <constraint firstItem="LIc-rg-bdJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="egH-Wk-x5y"/>
+                    <constraint firstAttribute="trailing" secondItem="LIc-rg-bdJ" secondAttribute="trailing" id="fni-iz-T2W"/>
+                    <constraint firstItem="LIc-rg-bdJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zr1-Wy-yoz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="callToActionBtn" destination="VLG-C2-o6B" id="ecL-0v-Et6"/>
+                <outlet property="mainView" destination="LIc-rg-bdJ" id="ePx-1g-jel"/>
+                <outlet property="titleLabel" destination="HDm-bE-Fnf" id="GIB-NL-hOl"/>
+            </connections>
+            <point key="canvasLocation" x="-17.557251908396946" y="-28.87323943661972"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
