@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -48,6 +48,7 @@
 		E5818AD42B551F1700975DF5 /* SettingTitleTapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5818AD22B551F1700975DF5 /* SettingTitleTapTableViewCell.swift */; };
 		E5818AD52B551F1700975DF5 /* SettingTitleTapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5818AD32B551F1700975DF5 /* SettingTitleTapTableViewCell.xib */; };
 		E58353AE2A5E266700708847 /* ZoomVideoSDKUIToolkit.docc in Sources */ = {isa = PBXBuildFile; fileRef = E58353AD2A5E266700708847 /* ZoomVideoSDKUIToolkit.docc */; };
+		E58360072BD5F81A000BCFA1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E58360062BD5F81A000BCFA1 /* PrivacyInfo.xcprivacy */; };
 		E586B7DB2AEFF2A1005DE21A /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586B7D92AEFF2A1005DE21A /* ChatVC.swift */; };
 		E586B7DC2AEFF2A1005DE21A /* ChatVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E586B7DA2AEFF2A1005DE21A /* ChatVC.xib */; };
 		E586B7E02AF0E3E7005DE21A /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586B7DF2AF0E3E7005DE21A /* ChatManager.swift */; };
@@ -160,6 +161,7 @@
 		E5818AD22B551F1700975DF5 /* SettingTitleTapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleTapTableViewCell.swift; sourceTree = "<group>"; };
 		E5818AD32B551F1700975DF5 /* SettingTitleTapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTitleTapTableViewCell.xib; sourceTree = "<group>"; };
 		E58353AD2A5E266700708847 /* ZoomVideoSDKUIToolkit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ZoomVideoSDKUIToolkit.docc; sourceTree = "<group>"; };
+		E58360062BD5F81A000BCFA1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		E586B7D92AEFF2A1005DE21A /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		E586B7DA2AEFF2A1005DE21A /* ChatVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatVC.xib; sourceTree = "<group>"; };
 		E586B7DF2AF0E3E7005DE21A /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
@@ -174,7 +176,7 @@
 		E5B5FA232A32F30100D7B5A2 /* UIToolkitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolkitError.swift; sourceTree = "<group>"; };
 		E5C964012AB2AAAC006F12B8 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		E5CC3B4A2A441632008C96FC /* BadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
-		E5CC3B4D2A4476A8008C96FC /* ZoomVideoSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ZoomVideoSDK.xcframework; path = ZoomVideoSDKUIToolkit/ZoomVideoSDK.xcframework; sourceTree = "<group>"; };
+		E5CC3B4D2A4476A8008C96FC /* ZoomVideoSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Video Communications, Inc."; lastKnownFileType = wrapper.xcframework; name = ZoomVideoSDK.xcframework; path = ZoomVideoSDKUIToolkit/ZoomVideoSDK.xcframework; sourceTree = "<group>"; };
 		E5CD3FF62A79283300B1AE67 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E5D72C952A40229900690ADF /* MoreOptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionManager.swift; sourceTree = "<group>"; };
 		E5D72C982A40290F00690ADF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -182,7 +184,7 @@
 		E5D9676C2B5F6BD200B072F0 /* VirtualBackgroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualBackgroundVC.swift; sourceTree = "<group>"; };
 		E5D9676D2B5F6BD200B072F0 /* VirtualBackgroundVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VirtualBackgroundVC.xib; sourceTree = "<group>"; };
 		E5D967702B5F6D4C00B072F0 /* VirtualBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualBackgroundViewModel.swift; sourceTree = "<group>"; };
-		E5D967742B5F713E00B072F0 /* zoomcml.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = zoomcml.xcframework; path = ZoomVideoSDKUIToolkit/zoomcml.xcframework; sourceTree = "<group>"; };
+		E5D967742B5F713E00B072F0 /* zoomcml.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Video Communications, Inc."; lastKnownFileType = wrapper.xcframework; name = zoomcml.xcframework; path = ZoomVideoSDKUIToolkit/zoomcml.xcframework; sourceTree = "<group>"; };
 		E5DE84232A7CD94800C8846D /* SettingTitleButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E5DE84242A7CD94800C8846D /* SettingTitleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTitleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		E5DE84272A7D3D9700C8846D /* SettingTitleTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleTextFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		E5A24D982A08E32C00676935 = {
 			isa = PBXGroup;
 			children = (
+				E58360062BD5F81A000BCFA1 /* PrivacyInfo.xcprivacy */,
 				E5A24DA42A08E32C00676935 /* ZoomVideoSDKUIToolkit */,
 				E5A24DB02A08E32C00676935 /* ZoomVideoSDKUIToolkitTests */,
 				E5E9D9EC2A09D68F00B08895 /* ZoomVideoSDKUIToolkitSample */,
@@ -594,6 +597,7 @@
 				E5DE842A2A7D3D9700C8846D /* SettingTitleTextFieldTableViewCell.xib in Resources */,
 				E5D9676F2B5F6BD200B072F0 /* VirtualBackgroundVC.xib in Resources */,
 				E51D10B02AD667A700ED17AD /* ParticipantTableViewCell.xib in Resources */,
+				E58360072BD5F81A000BCFA1 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,7 +865,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=*]" = (
 					"@executable_path/../Frameworks",
@@ -905,7 +909,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=*]" = (
 					"@executable_path/../Frameworks",
@@ -992,7 +996,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1027,7 +1031,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
