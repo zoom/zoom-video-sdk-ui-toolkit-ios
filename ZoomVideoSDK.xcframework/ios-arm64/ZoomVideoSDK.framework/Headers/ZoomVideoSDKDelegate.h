@@ -21,6 +21,7 @@
 #import <ZoomVideoSDK/ZoomVideoSDKLiveStreamHelper.h>
 #import <ZoomVideoSDK/ZoomVideoSDKUserHelper.h>
 #import <ZoomVideoSDK/ZoomVideoSDKLiveTranscriptionHelper.h>
+#import <ZoomVideoSDK/ZoomVideoSDKFileTranserHandle.h>
 
 @class ZoomVideoSDKRawDataPipe;
 @class ZoomVideoSDKVideoCanvas;
@@ -142,11 +143,13 @@
 
 /*!
  @brief Callback: Invoked when the session requires a password to join.
+ @param completion the block for this callback.
  */
 - (void)onSessionNeedPassword:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable password, BOOL leaveSessionIgnorePassword))completion;
 
 /*!
  @brief Callback: Invoked when the provided session password is wrong or invalid.
+ @param completion the block for this callback.
  */
 - (void)onSessionPasswordWrong:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable password, BOOL leaveSessionIgnorePassword))completion;
 
@@ -159,6 +162,7 @@
 /*!
  @brief Callback: Invoked when individual user's audio raw data received
  @param rawData Raw audio data. see [ZoomVideoSDKAudioRawData].
+ @param user  See [ZoomVideoSDKUser].
  */
 - (void)onOneWayAudioRawDataReceived:(ZoomVideoSDKAudioRawData * _Nullable)rawData user:(ZoomVideoSDKUser * _Nullable)user;
 
@@ -174,6 +178,13 @@
  @param failReason Invite by phone failed reason. See [ZoomVideoSDKPhoneFailedReason].
  */
 - (void)onInviteByPhoneStatus:(ZoomVideoSDKPhoneStatus)status failReason:(ZoomVideoSDKPhoneFailedReason)failReason;
+
+/*!
+ @brief Callback: Invoked when the invite by phone user joined session success.
+ @param user success joined user,  See [ZoomVideoSDKUser].
+ @param phoneNumber phone number of callout.
+ */
+- (void)onCalloutJoinSuccess:(ZoomVideoSDKUser * _Nullable)user phoneNumber:(NSString * _Nullable)phoneNumber;
 
 /**
  @brief Callback: Invoked when the command channel is ready to be used.
@@ -328,6 +339,21 @@
  @param view The view that failed to subscribe.
  */
 - (void)onShareCanvasSubscribeFail:(ZoomVideoSDKSubscribeFailReason)failReason user:(ZoomVideoSDKUser *_Nullable)user view:(UIView *_Nullable)view;
+
+/**
+ @brief Invoked when send file status make change.
+ @param file The class to sendfile object.
+ @param status The stauts of file transfer.
+ */
+- (void)onSendFileStatus:(ZoomVideoSDKSendFile * _Nullable)file status:(ZoomVideoSDKFileTransferStatus)status;
+
+/**
+ @brief Invoked when send file status make change.
+ @param file The class to receive file object.
+ @param status The stauts of file transfer.
+ */
+- (void)onReceiveFileStatus:(ZoomVideoSDKReceiveFile * _Nullable)file status:(ZoomVideoSDKFileTransferStatus)status;
+
 
 @end
 
