@@ -67,7 +67,7 @@ class CustomAlertBox: UIView {
         removeFromSuperview()
     }
     
-    public func setButton(title: String, description: String = "", textFieldPlaceholder: String = "", shouldHideCancelBtn: Bool = false) {
+    public func setButton(title: String, description: String = "", textFieldPlaceholder: String = "", shouldHideCancelBtn: Bool = false, customConfirmBtnString: String? = nil) {
         titleLabel.text = title
         if description.isEmpty {
             descriptionLabel.isHidden = true
@@ -83,6 +83,8 @@ class CustomAlertBox: UIView {
         }
         
         cancelBtn.isHidden = shouldHideCancelBtn
+
+        confirmBtn.setTitle(customConfirmBtnString, for: .normal)
     }
     
     public func present() {

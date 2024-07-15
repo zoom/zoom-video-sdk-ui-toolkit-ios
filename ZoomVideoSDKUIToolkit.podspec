@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ZoomVideoSDKUIToolkit"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "Create video conferencing iOS apps with the Zoom Video SDK."
 
   # This description is used to generate tags and improve search results.
@@ -64,7 +64,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  spec.platform     = :ios, "11.0"
+  spec.platform     = :ios, "13.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/zoom/videosdk-ui-toolkit-ios.git", :tag => "release-1.0.1" }
+  spec.source       = { :git => "https://github.com/zoom/videosdk-ui-toolkit-ios.git", :tag => "release-1.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -120,7 +120,7 @@ Pod::Spec.new do |spec|
 
   # spec.framework  = "SomeFramework"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
-  spec.vendored_frameworks = "ZoomVideoSDKUIToolkit/ZoomVideoSDK.xcframework"
+  spec.vendored_frameworks = "ZoomVideoSDKUIToolkit/ZoomVideoSDK.xcframework", "ZoomVideoSDKUIToolkit/zoomcml.xcframework"
 
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"

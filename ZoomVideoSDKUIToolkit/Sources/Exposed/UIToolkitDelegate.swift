@@ -4,8 +4,10 @@
 //
 //  Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
 
+import Foundation
+
 /// Delegate for UI toolkit event notifications.
-public protocol UIToolkitDelegate: AnyObject {
+@objc public protocol UIToolkitDelegate: AnyObject {
     
     /// Notifies when an error occurred.
     /// - Parameter errorType: Enumeration of all the UI Toolkit errors.

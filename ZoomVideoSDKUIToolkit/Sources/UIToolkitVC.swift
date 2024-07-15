@@ -43,7 +43,7 @@ public class UIToolkitVC: UIViewController {
     private var loader: Loader?
     
     /// The UIToolkitDelegate sends event notifications.
-    public weak var delegate: UIToolkitDelegate?
+    @objc public weak var delegate: UIToolkitDelegate?
     
     // Idle Timer - For Showing/Hiding of Bottom Nav Bar
     var idleTimer = Timer()
@@ -63,6 +63,11 @@ public class UIToolkitVC: UIViewController {
         super.init(nibName: "UIToolkitVC", bundle: Bundle(for: UIToolkitVC.self))
     }
     
+    @objc public init(sessionContextObject: SessionContextObjC) {
+        self.inputSessionContext = SessionContext(sessionContextObject: sessionContextObject)
+        super.init(nibName: "UIToolkitVC", bundle: Bundle(for: UIToolkitVC.self))
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -487,7 +492,7 @@ public class UIToolkitVC: UIViewController {
 
 @_documentation(visibility:private)
 extension UIToolkitVC: ZoomVideoSDKDelegate {
-    public func onError(_ ErrorType: ZoomVideoSDKError, detail details: Int) {
+    @objc public func onError(_ ErrorType: ZoomVideoSDKError, detail details: Int) {
         switch ErrorType {
         case .Errors_Auth_Empty_Key_or_Secret:
             alertError(with: .EmptyKeyOrSecret, dismiss: true)

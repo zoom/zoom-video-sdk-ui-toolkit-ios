@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81FA33882C261EA60004EAA4 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FA33872C261EA60004EAA4 /* StatisticsVC.swift */; };
+		81FA338A2C261EE60004EAA4 /* StatisticsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81FA33892C261EE60004EAA4 /* StatisticsVC.xib */; };
+		81FA338E2C2641220004EAA4 /* StatsBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FA338D2C2641220004EAA4 /* StatsBlockCell.swift */; };
+		81FA33902C26412E0004EAA4 /* StatsBlockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81FA338F2C26412D0004EAA4 /* StatsBlockCell.xib */; };
 		E509C1FD2AAF460C00111192 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509C1FC2AAF460C00111192 /* UIImage+Extension.swift */; };
 		E509C1FF2AB0539900111192 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509C1FE2AB0539900111192 /* UIButton+Extension.swift */; };
 		E51D109A2AD3A55100ED17AD /* CustomBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D10992AD3A55100ED17AD /* CustomBottomSheetView.swift */; };
@@ -122,6 +126,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		81FA33872C261EA60004EAA4 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
+		81FA33892C261EE60004EAA4 /* StatisticsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticsVC.xib; sourceTree = "<group>"; };
+		81FA338D2C2641220004EAA4 /* StatsBlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBlockCell.swift; sourceTree = "<group>"; };
+		81FA338F2C26412D0004EAA4 /* StatsBlockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsBlockCell.xib; sourceTree = "<group>"; };
 		E509C1FC2AAF460C00111192 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E509C1FE2AB0539900111192 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		E51D10992AD3A55100ED17AD /* CustomBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBottomSheetView.swift; sourceTree = "<group>"; };
@@ -231,6 +239,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81FA33862C261E910004EAA4 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				81FA33872C261EA60004EAA4 /* StatisticsVC.swift */,
+				81FA33892C261EE60004EAA4 /* StatisticsVC.xib */,
+				81FA338D2C2641220004EAA4 /* StatsBlockCell.swift */,
+				81FA338F2C26412D0004EAA4 /* StatsBlockCell.xib */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 		E53A56482A98AE2D001D11C6 /* ActiveSpeaker&Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +425,7 @@
 				E53A56482A98AE2D001D11C6 /* ActiveSpeaker&Gallery */,
 				E5AA72562AF271A7000CAF9F /* Participants */,
 				E54F6D9C2A7A6A1B002AA0C6 /* Setting */,
+				81FA33862C261E910004EAA4 /* Statistics */,
 				E54224772A396EB300066A94 /* Chat */,
 			);
 			path = Cores;
@@ -580,8 +600,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E54AC3B62A0955DB00E27DFB /* UIToolkitVC.xib in Resources */,
+				81FA338A2C261EE60004EAA4 /* StatisticsVC.xib in Resources */,
 				E54F6DAE2A7B9D14002AA0C6 /* SettingsVC.xib in Resources */,
 				E5818AD52B551F1700975DF5 /* SettingTitleTapTableViewCell.xib in Resources */,
+				81FA33902C26412E0004EAA4 /* StatsBlockCell.xib in Resources */,
 				E53FD4E22ABD5E8F0053BF0D /* Loader.xib in Resources */,
 				E5814B1E2A1B35DF0039BAAA /* ChatTableViewCell.xib in Resources */,
 				E54F6DB22A7BA3A9002AA0C6 /* SettingTitleToggleTableViewCell.xib in Resources */,
@@ -666,7 +688,9 @@
 				E51D10B22AD671C400ED17AD /* ParticipantsViewModel.swift in Sources */,
 				E5DE84292A7D3D9700C8846D /* SettingTitleTextFieldTableViewCell.swift in Sources */,
 				E52AE9DA2B5FA4FF00580030 /* VBCollectionViewCell.swift in Sources */,
+				81FA33882C261EA60004EAA4 /* StatisticsVC.swift in Sources */,
 				E580A3952AE3646F00E7116E /* UserManager.swift in Sources */,
+				81FA338E2C2641220004EAA4 /* StatsBlockCell.swift in Sources */,
 				E586B7E02AF0E3E7005DE21A /* ChatManager.swift in Sources */,
 				E51D10AB2AD5975300ED17AD /* ParticipantsVC.swift in Sources */,
 			);

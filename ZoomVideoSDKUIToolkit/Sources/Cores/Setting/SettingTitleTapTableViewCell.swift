@@ -5,6 +5,7 @@
 //  Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
 
 import UIKit
+import ZoomVideoSDK
 
 protocol SettingTitleTapFieldTableViewCellDelegate: AnyObject {
     func userHitDone(with text: String, cell: SettingTitleTapTableViewCell)
@@ -30,9 +31,6 @@ class SettingTitleTapTableViewCell: UITableViewCell {
         titleLabel.textColor = UIColor(red: 0.075, green: 0.086, blue: 0.098, alpha: 1)
         tapImageView.image = UIImage(named: "ChevronRight", in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate)
         tapImageView.tintColor = UIColor(red: 0.075, green: 0.086, blue: 0.098, alpha: 1)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentChangeNameView))
-        mainView.addGestureRecognizer(tapGesture)
     }
     
     @objc func presentChangeNameView() {
@@ -45,6 +43,35 @@ class SettingTitleTapTableViewCell: UITableViewCell {
         customAlertUI.present()
     }
     
+    @objc func presentSessionInfoView() {
+        guard let vc = UIApplication.topViewController() else { return }
+        let customAlertUI = CustomAlertBox()
+        let sessionNameText = "Session Name: \(ZoomVideoSDK.shareInstance()?.getSession()?.getName() ?? "(no name)")\n\n"
+
+        var sessionPasscode = "(no passcode)"
+        if let password = ZoomVideoSDK.shareInstance()?.getSession()?.getPassword(), !password.isEmpty {
+            sessionPasscode = password
+        }
+        let sessionPasscodeText = "Session Passcode: \(sessionPasscode)\n\n"
+
+        let sessionIDText = "Session ID: \(ZoomVideoSDK.shareInstance()?.getSession()?.getID() ?? "(no ID)")"
+
+        let descriptionText = sessionNameText + sessionPasscodeText + sessionIDText
+        
+        customAlertUI.setButton(title: "Session Info", description: descriptionText, shouldHideCancelBtn: true, customConfirmBtnString: "Close")
+        customAlertUI.delegate = self
+        vc.view.addSubview(customAlertUI)
+        customAlertUI.fitLayoutTo(view: vc.view)
+        customAlertUI.present()
+    }
+    
+    @objc func presentStatisticsView() {
+        guard let vc = UIApplication.topViewController() else { return }
+        let statisticsView = StatisticsVC()
+        vc.modalPresentationStyle = .custom
+        vc.present(statisticsView, animated: true)
+    }
+
 }
 
 extension SettingTitleTapTableViewCell: CustomAlertBoxDelegate {

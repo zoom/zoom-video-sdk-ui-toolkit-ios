@@ -7,7 +7,7 @@
 import Foundation
 
 /// Enumeration of all the UI toolkit errors.
-public enum UIToolkitError: Int, CaseIterable {
+@objc public enum UIToolkitError: Int, CaseIterable {
     // Note: DocC auto sort alphabetically for Enum. Can't seem to find a way to sort by Int value
     // TODO: Find to not sort it
     
@@ -175,4 +175,10 @@ public enum UIToolkitError: Int, CaseIterable {
         }
     }
     
+}
+
+@objc public class UIToolkitErrorParser: NSObject {
+    @objc public static func descriptionForError(_ error: UIToolkitError) -> String {
+        return error.description
+    }
 }

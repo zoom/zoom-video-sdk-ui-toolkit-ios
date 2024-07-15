@@ -23,7 +23,7 @@ enum LocalUserSetting {
     var userSetting: [UserSetting]? {
         switch self {
         case .Personal:
-            return [.ChangeName]
+            return [.ChangeName, .SessionInfo, .Statistics]
         case .Session:
             return nil
         }
@@ -45,7 +45,9 @@ enum UserSetting: String {
     case Manager
     case ChangeName
     case RemoveFromSession
-    
+    case SessionInfo
+    case Statistics
+
     var title: (String) {
         switch self {
         case .Mute:
@@ -58,6 +60,10 @@ enum UserSetting: String {
             return ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.getName() ?? "Not available"
         case .RemoveFromSession:
             return "Remove from session"
+        case .SessionInfo:
+            return "Session information"
+        case .Statistics:
+            return "Statistics"
         }
     }
     
@@ -67,7 +73,7 @@ enum UserSetting: String {
             return "Assign"
         case .RemoveFromSession:
             return "Remove"
-        case .Mute, .Manager, .ChangeName:
+        case .Mute, .Manager, .ChangeName, .SessionInfo, .Statistics:
             return ""
         }
     }
@@ -83,6 +89,10 @@ enum UserSetting: String {
         case .ChangeName:
             return .TitleTextField
         case .RemoveFromSession:
+            return .TitleButton
+        case .SessionInfo:
+            return .TitleButton
+        case .Statistics:
             return .TitleButton
         }
     }
@@ -225,7 +235,31 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.titleLabel.text = userSetting[indexPath.row].title
                 cell.delegate = self
+                let tapGesture = UITapGestureRecognizer(target: cell, action: #selector(cell.presentChangeNameView))
+                cell.mainView.addGestureRecognizer(tapGesture)
+
                 return cell
+            case .SessionInfo:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: titleTapReuseIdentifier, for: indexPath) as? SettingTitleTapTableViewCell else { return UITableViewCell() }
+
+                cell.titleLabel.text = userSetting[indexPath.row].title
+                cell.delegate = self
+                let tapGesture = UITapGestureRecognizer(target: cell, action: #selector(cell.presentSessionInfoView))
+                cell.mainView.addGestureRecognizer(tapGesture)
+
+                return cell
+                
+            case .Statistics:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: titleTapReuseIdentifier, for: indexPath) as? SettingTitleTapTableViewCell else { return UITableViewCell() }
+
+                cell.titleLabel.text = userSetting[indexPath.row].title
+                cell.delegate = self
+                let tapGesture = UITapGestureRecognizer(target: cell, action: #selector(cell.presentStatisticsView))
+                cell.mainView.addGestureRecognizer(tapGesture)
+
+                return cell
+
+
             case .Host, .Manager, .Mute, .RemoveFromSession:
                 return UITableViewCell()
             }
