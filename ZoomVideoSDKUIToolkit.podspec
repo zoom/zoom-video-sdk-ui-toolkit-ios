@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "ZoomVideoSDKUIToolkit"
   spec.version      = "1.0.2"
-  spec.summary      = "Create video conferencing iOS apps with the Zoom Video SDK."
+  spec.summary      = "Create video conferencing iOS apps with the Zoom Video SDK, no virtual background."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  Toolkit for creating Zoom Video SDK iOS apps with video, audio, chat, and more features.
+  Toolkit for creating Zoom Video SDK iOS apps with video, audio, chat, and more features. Does not include virutal background support.
                    DESC
 
   spec.homepage     = "https://developers.zoom.us/docs/video-sdk/ios/ui-toolkit/"
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/zoom/videosdk-ui-toolkit-ios.git", :tag => "release-1.0.2" }
+  spec.source       = { :git => "https://github.com/zoom/videosdk-ui-toolkit-ios.git", :tag => "essential-release-1.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -120,7 +120,7 @@ Pod::Spec.new do |spec|
 
   # spec.framework  = "SomeFramework"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
-  spec.vendored_frameworks = "ZoomVideoSDKUIToolkit/ZoomVideoSDK.xcframework", "ZoomVideoSDKUIToolkit/zoomcml.xcframework"
+  spec.vendored_frameworks = "ZoomVideoSDKUIToolkit/ZoomVideoSDK.xcframework"
 
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"

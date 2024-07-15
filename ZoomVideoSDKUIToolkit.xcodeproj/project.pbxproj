@@ -27,7 +27,6 @@
 		E51D10B02AD667A700ED17AD /* ParticipantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51D10AE2AD667A700ED17AD /* ParticipantTableViewCell.xib */; };
 		E51D10B22AD671C400ED17AD /* ParticipantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D10B12AD671C400ED17AD /* ParticipantsViewModel.swift */; };
 		E523901E2A715711007C4140 /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523901D2A715711007C4140 /* FeatureManager.swift */; };
-		E52AE9D42B5F958B00580030 /* zoomcml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D967742B5F713E00B072F0 /* zoomcml.xcframework */; };
 		E52AE9D62B5F969600580030 /* ZoomVideoSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CC3B4D2A4476A8008C96FC /* ZoomVideoSDK.xcframework */; };
 		E52AE9DA2B5FA4FF00580030 /* VBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52AE9D82B5FA4FF00580030 /* VBCollectionViewCell.swift */; };
 		E52AE9DB2B5FA4FF00580030 /* VBCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52AE9D92B5FA4FF00580030 /* VBCollectionViewCell.xib */; };
@@ -75,8 +74,6 @@
 		E5D9676E2B5F6BD200B072F0 /* VirtualBackgroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D9676C2B5F6BD200B072F0 /* VirtualBackgroundVC.swift */; };
 		E5D9676F2B5F6BD200B072F0 /* VirtualBackgroundVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D9676D2B5F6BD200B072F0 /* VirtualBackgroundVC.xib */; };
 		E5D967712B5F6D4C00B072F0 /* VirtualBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D967702B5F6D4C00B072F0 /* VirtualBackgroundViewModel.swift */; };
-		E5D967782B5F724100B072F0 /* zoomcml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D967742B5F713E00B072F0 /* zoomcml.xcframework */; };
-		E5D967792B5F724100B072F0 /* zoomcml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D967742B5F713E00B072F0 /* zoomcml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5DE84252A7CD94800C8846D /* SettingTitleButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE84232A7CD94800C8846D /* SettingTitleButtonTableViewCell.swift */; };
 		E5DE84262A7CD94800C8846D /* SettingTitleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DE84242A7CD94800C8846D /* SettingTitleButtonTableViewCell.xib */; };
 		E5DE84292A7D3D9700C8846D /* SettingTitleTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE84272A7D3D9700C8846D /* SettingTitleTextFieldTableViewCell.swift */; };
@@ -117,7 +114,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E5E9DA0E2A0A4B5D00B08895 /* ZoomVideoSDKUIToolkit.framework in Embed Frameworks */,
-				E5D967792B5F724100B072F0 /* zoomcml.xcframework in Embed Frameworks */,
 				E5CC3B512A447885008C96FC /* ZoomVideoSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -192,7 +188,6 @@
 		E5D9676C2B5F6BD200B072F0 /* VirtualBackgroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualBackgroundVC.swift; sourceTree = "<group>"; };
 		E5D9676D2B5F6BD200B072F0 /* VirtualBackgroundVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VirtualBackgroundVC.xib; sourceTree = "<group>"; };
 		E5D967702B5F6D4C00B072F0 /* VirtualBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualBackgroundViewModel.swift; sourceTree = "<group>"; };
-		E5D967742B5F713E00B072F0 /* zoomcml.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Video Communications, Inc."; lastKnownFileType = wrapper.xcframework; name = zoomcml.xcframework; path = ZoomVideoSDKUIToolkit/zoomcml.xcframework; sourceTree = "<group>"; };
 		E5DE84232A7CD94800C8846D /* SettingTitleButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E5DE84242A7CD94800C8846D /* SettingTitleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTitleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		E5DE84272A7D3D9700C8846D /* SettingTitleTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleTextFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -213,7 +208,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52AE9D42B5F958B00580030 /* zoomcml.xcframework in Frameworks */,
 				E52AE9D62B5F969600580030 /* ZoomVideoSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5E9DA0D2A0A4B5D00B08895 /* ZoomVideoSDKUIToolkit.framework in Frameworks */,
-				E5D967782B5F724100B072F0 /* zoomcml.xcframework in Frameworks */,
 				E5CC3B502A447885008C96FC /* ZoomVideoSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				E5CC3B4D2A4476A8008C96FC /* ZoomVideoSDK.xcframework */,
-				E5D967742B5F713E00B072F0 /* zoomcml.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
