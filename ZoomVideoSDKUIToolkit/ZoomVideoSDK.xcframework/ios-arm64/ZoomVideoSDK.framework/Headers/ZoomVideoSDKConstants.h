@@ -48,14 +48,15 @@ typedef NS_ENUM(NSUInteger,ZoomVideoSDKError)
     Errors_Session_Already_In_Progress,
     Errors_Session_Dont_Support_SessionType,
     Errors_Session_You_Have_No_Share,
-    Errors_Session_Reconncting,
-    Errors_Session_Disconncting,
+    Errors_Session_Reconnecting,
+    Errors_Session_Disconnecting,
     Errors_Session_Not_Started = 2010,
     Errors_Session_Need_Password,
     Errors_Session_Password_Wrong,
     Errors_Session_Remote_DB_Error,
     Errors_Session_Invalid_Param,
     Errors_Session_Client_Incompatible,
+    Errors_Session_Account_FreeMinutesExceeded,
     Errors_Session_Audio_Error = 3000,
     Errors_Session_Audio_No_Microphone,
     Errors_Session_Audio_No_Speaker,
@@ -101,6 +102,10 @@ typedef NS_ENUM(NSUInteger,ZoomVideoSDKError)
     Errors_Session_Share_You_Are_Not_Sharing,
     Errors_Session_Share_Type_Is_Not_Support,
     Errors_Session_Share_Internal_Error,
+    
+    Errors_Session_Filetransfer_UnknownError = 7500,
+    Errors_Session_Filetransfer_FileTypeBlocked,
+    Errors_Session_Filetransfer_FileSizelimited
 };
 
 /*!
@@ -110,7 +115,7 @@ typedef NS_ENUM(NSUInteger,ZoomVideoSDKAudioType) {
     ZoomVideoSDKAudioType_None   = 0,
     ZoomVideoSDKAudioType_VOIP,
     ZoomVideoSDKAudioType_TELEPHONY,
-    ZoomVideoSDKAudioType_Unknow,
+    ZoomVideoSDKAudioType_Unknown,
 };
 
 /*!
@@ -265,10 +270,12 @@ typedef NS_ENUM(NSUInteger, ZoomVideoSDKVideoPreferenceMode) {
 };
 
 typedef NS_ENUM(NSUInteger, ZoomVideoSDKMultiCameraStreamStatus) {
-    ZoomVideoSDKMultiCameraStreamStatus_JoinStart, ///<Current user only. This status is received when the current user starts the attempt to use multiple cameras in the session.
-    ZoomVideoSDKMultiCameraStreamStatus_JoinFail, ///<Current user only. This status is received when the current user fails the attempt to use multiple cameras in the session.
-    ZoomVideoSDKMultiCameraStreamStatus_Joined, ///<Broadcasted to all users. This status is received when a new camera has been successfully added to the session as the multiple cameras.
-    ZoomVideoSDKMultiCameraStreamStatus_Left, ///<Broadcasted to all users. This status is received when a camera that is being used as the multiple cameras has left the session.
+    ZoomVideoSDKMultiCameraStreamStatus_JoinStart,  ///<Current user only. This status is received when the current user starts the attempt to use multiple cameras in the session.
+    ZoomVideoSDKMultiCameraStreamStatus_JoinFail,   ///<Current user only. This status is received when the current user fails the attempt to use multiple cameras in the session.
+    ZoomVideoSDKMultiCameraStreamStatus_Joined,     ///<Broadcasted to all users. This status is received when a new camera has been successfully added to the session as the multiple cameras.
+    ZoomVideoSDKMultiCameraStreamStatus_Left,       ///<Broadcasted to all users. This status is received when a camera that is being used as the multiple cameras has left the session.
+    ZoomVideoSDKMultiCameraStreamStatus_VideoOn,    ///<Broadcasted to all users. When some multiple camera is unmuted, you will receive the status.
+    ZoomVideoSDKMultiCameraStreamStatus_VideoOff,   ///<Broadcasted to all users. When some multiple camera is muted, you will receive the status.
 };
 
 typedef NS_ENUM(NSUInteger, ZoomVideoSDKLiveTranscriptionStatus) {
@@ -443,6 +450,23 @@ typedef NS_ENUM(NSInteger, ZoomVideoSDKTestMicStatus) {
     ZoomVideoSDKMic_CanTest = 0,///<Test the mic via TestMicStartRecording. It is useless to call TestMicStopTesting/TestMicPlayRecording in this status.
     ZoomVideoSDKMic_Recording,///<Test the mic via TestMicStopTesting/TestMicPlayRecording. It is useless to call TestMicStartRecording in this status.
     ZoomVideoSDKMic_CanPlay,///<Test the mic via TestMicStopTesting/TestMicPlayRecording. It is useless call TestMicStartRecording in this status.
+};
+
+
+typedef NS_ENUM(NSInteger, ZoomVideoSDKFileTransferStatus) {
+    FileTransferState_None = 0,         /// The file transfer has no state
+    FileTransferState_ReadyToTransfer,  /// The file transfer is ready to start
+    FileTransferState_Transfering,      /// The file transfer is in progress
+    FileTransferState_TransferFailed,   /// The file transfer failed
+    FileTransferState_TransferDone,     /// The file transfer completed successfully
+};
+
+typedef NS_ENUM(NSInteger, ZoomVideoSDKSessionLeaveReason) {
+    ZoomVideoSDKSessionLeaveReason_Unknown = 0,     /// Unknown.
+    ZoomVideoSDKSessionLeaveReason_BySelf,          /// Leave session by self.
+    ZoomVideoSDKSessionLeaveReason_KickByHost,      /// Kicked by host.
+    ZoomVideoSDKSessionLeaveReason_EndByHost,       /// Ended by host.
+    ZoomVideoSDKSessionLeaveReason_NetworkError,    /// Network error.
 };
 
 #endif /* ZoomVideoSDKConstants_h */

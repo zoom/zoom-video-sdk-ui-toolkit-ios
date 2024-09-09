@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,6 +31,8 @@
                 <outlet property="participantBtn" destination="cKh-lc-va3" id="KLS-MF-u0t"/>
                 <outlet property="sessionTitleLabel" destination="brX-9W-FiH" id="EWY-KI-8pN"/>
                 <outlet property="shareScreenBtn" destination="Nzo-Zh-N0s" id="Msg-kY-TGx"/>
+                <outlet property="shareScreenView" destination="d8Q-zb-hfa" id="b0a-qV-h8g"/>
+                <outlet property="stopSharingButton" destination="8Yg-QW-pxR" id="GbM-2w-CYP"/>
                 <outlet property="topNavBar" destination="c9k-z4-9pe" id="ZSq-Qk-Vgh"/>
                 <outlet property="videoBtn" destination="SWj-OO-k1S" id="7ND-b4-p8P"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -167,6 +169,34 @@
                         <constraint firstAttribute="height" constant="77" id="fWo-nj-KLK"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8Q-zb-hfa" userLabel="ShareScreenView">
+                    <rect key="frame" x="0.0" y="119" width="393" height="622"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Yg-QW-pxR">
+                            <rect key="frame" x="135.33333333333334" y="293" width="122.33333333333334" height="34.333333333333314"/>
+                            <color key="backgroundColor" red="0.90987533330000003" green="0.089935831729999999" blue="0.23926979300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Stop Sharing"/>
+                            <connections>
+                                <action selector="onClickStopShareBtn:" destination="-1" eventType="touchUpInside" id="dz9-IL-ZU8"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are sharing your screen." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVL-hT-cmy">
+                            <rect key="frame" x="91" y="202" width="211" height="19.333333333333343"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="8Yg-QW-pxR" firstAttribute="top" secondItem="CVL-hT-cmy" secondAttribute="bottom" constant="71.666666666666657" id="5w8-Bn-gF0"/>
+                        <constraint firstItem="CVL-hT-cmy" firstAttribute="top" secondItem="d8Q-zb-hfa" secondAttribute="top" constant="202" id="cuL-3V-4Xu"/>
+                        <constraint firstItem="8Yg-QW-pxR" firstAttribute="centerX" secondItem="d8Q-zb-hfa" secondAttribute="centerX" id="dU7-SY-ebP"/>
+                        <constraint firstItem="CVL-hT-cmy" firstAttribute="centerX" secondItem="d8Q-zb-hfa" secondAttribute="centerX" id="ilL-JQ-QoU"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Knc-0Q-2fX" userLabel="BottomBar">
                     <rect key="frame" x="0.0" y="741" width="393" height="77"/>
                     <subviews>
@@ -263,6 +293,7 @@
                 <constraint firstItem="c9k-z4-9pe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KdG-Hb-mxG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZrD-vp-HcG" secondAttribute="bottom" id="Mkc-G2-Rgj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Knc-0Q-2fX" secondAttribute="trailing" id="Oxk-Vo-gkV"/>
+                <constraint firstItem="d8Q-zb-hfa" firstAttribute="height" secondItem="IJM-EA-lt9" secondAttribute="height" id="RDR-SZ-rZM"/>
                 <constraint firstItem="ZrD-vp-HcG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YRY-g6-crq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZrD-vp-HcG" secondAttribute="trailing" id="b85-ZR-r54"/>
                 <constraint firstItem="IJM-EA-lt9" firstAttribute="top" secondItem="c9k-z4-9pe" secondAttribute="bottom" id="cqo-qO-9v5"/>
@@ -271,11 +302,14 @@
                 <constraint firstItem="Knc-0Q-2fX" firstAttribute="top" secondItem="IJM-EA-lt9" secondAttribute="bottom" id="iLa-lT-gbx"/>
                 <constraint firstItem="hHY-hc-5AT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iao-H4-6BH"/>
                 <constraint firstItem="ZrD-vp-HcG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iv0-b4-lmv"/>
+                <constraint firstItem="d8Q-zb-hfa" firstAttribute="centerX" secondItem="IJM-EA-lt9" secondAttribute="centerX" id="khy-Ch-XtJ"/>
                 <constraint firstItem="IJM-EA-lt9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mWC-5P-TqY"/>
+                <constraint firstItem="d8Q-zb-hfa" firstAttribute="width" secondItem="IJM-EA-lt9" secondAttribute="width" id="qxI-Tb-ybp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hHY-hc-5AT" secondAttribute="trailing" id="rgv-Qa-QK3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4D0-Yn-oTZ" secondAttribute="trailing" constant="16" id="u7B-dp-lAm"/>
                 <constraint firstItem="c9k-z4-9pe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vL7-WL-LX9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c9k-z4-9pe" secondAttribute="trailing" id="woe-NN-Uvi"/>
+                <constraint firstItem="d8Q-zb-hfa" firstAttribute="centerY" secondItem="IJM-EA-lt9" secondAttribute="centerY" id="y8F-QA-HOG"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-12.67605633802817"/>
         </view>

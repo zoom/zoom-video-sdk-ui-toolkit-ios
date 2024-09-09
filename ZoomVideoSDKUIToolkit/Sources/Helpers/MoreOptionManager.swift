@@ -243,7 +243,7 @@ class MoreOptionManager {
     // MARK: Chat Privilege related
 
     func getChatSettings() -> ZoomVideoSDKChatPrivilegeType? {
-        if let currentChatPrivilege = ZoomVideoSDK.shareInstance()?.getChatHelper().getChatPrivilege(), (currentChatPrivilege == .everyone_Publicly_And_Privately || currentChatPrivilege == .no_One) {
+        if let currentChatPrivilege = ZoomVideoSDK.shareInstance()?.getChatHelper()?.getChatPrivilege(), (currentChatPrivilege == .everyone_Publicly_And_Privately || currentChatPrivilege == .no_One) {
             return currentChatPrivilege
         } else {
             return nil
@@ -297,7 +297,7 @@ class MoreOptionManager {
     // MARK: Share Screen
     
     private func showShareScreenInfo() {
-        guard let userIsHost = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.isHost(), userIsHost, let currentIsShareLocked = ZoomVideoSDK.shareInstance()?.getShareHelper().isShareLocked() else { return }
+        guard let userIsHost = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.isHost(), userIsHost, let currentIsShareLocked = ZoomVideoSDK.shareInstance()?.getShareHelper()?.isShareLocked() else { return }
         let alertTitle = "Share feature is \(currentIsShareLocked ? "Disabled" : "Enabled"): Tap to change."
 //        alert.addAction(UIAlertAction(title: alertTitle, style: .default, handler: { _ in
 //            // TODO: Add Share Sceen Feature

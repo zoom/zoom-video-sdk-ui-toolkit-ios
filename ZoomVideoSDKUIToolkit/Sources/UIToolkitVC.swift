@@ -6,6 +6,7 @@
 
 import UIKit
 import ZoomVideoSDK
+import ReplayKit
 
 /// The UI toolkit view controller manages and shows the prebuilt video chat user interface.
 public class UIToolkitVC: UIViewController {
@@ -38,7 +39,11 @@ public class UIToolkitVC: UIViewController {
     @IBOutlet weak var pageControlHolderView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBOutlet weak var shareScreenView: UIView!
+    @IBOutlet weak var stopSharingButton: UIButton!
+
     internal var inputSessionContext: SessionContext!
+    internal var inputInitParams: InitParams?
     
     private var loader: Loader?
     
@@ -58,13 +63,17 @@ public class UIToolkitVC: UIViewController {
     
     // MARK: Initialization
     
-    public init(sessionContext: SessionContext) {
+    public init(sessionContext: SessionContext, initParams: InitParams? = nil) {
         self.inputSessionContext = sessionContext
+        self.inputInitParams = initParams
         super.init(nibName: "UIToolkitVC", bundle: Bundle(for: UIToolkitVC.self))
     }
     
-    @objc public init(sessionContextObject: SessionContextObjC) {
+    @objc public init(sessionContextObject: SessionContextObjC, initParamsObject: InitParamsObjC? = nil) {
         self.inputSessionContext = SessionContext(sessionContextObject: sessionContextObject)
+        if let paramsObject = initParamsObject {
+            self.inputInitParams = InitParams(initParamsObject: paramsObject)
+        }
         super.init(nibName: "UIToolkitVC", bundle: Bundle(for: UIToolkitVC.self))
     }
 
@@ -271,7 +280,7 @@ public class UIToolkitVC: UIViewController {
     }
     
     private func setupConnection() {
-        viewModel.setup(with: inputSessionContext)
+        viewModel.setup(with: inputSessionContext, inputInitParams: inputInitParams)
         ZoomVideoSDK.shareInstance()?.delegate = self
     }
     
@@ -384,7 +393,20 @@ public class UIToolkitVC: UIViewController {
     }
     
     @IBAction func onClickShareScreenBtn(_ sender: Any) {
-        // TODO: Share Screen Feature
+        if let isSomeoneSharing = ZoomVideoSDK.shareInstance()?.getShareHelper()?.isOtherSharing(), isSomeoneSharing == true {
+            let alert = UIAlertController(title: "Screen sharing already in progress.", message: nil, preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: {_ in
+                self.dismiss(animated: true)
+            })
+            alert.addAction(dismissAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        showShareScreenPicker()
+    }
+    
+    @IBAction func onClickStopShareBtn(_ sender: Any) {
+        showShareScreenPicker()
     }
     
     @IBAction func onClickParticipantBtn(_ sender: Any) {
@@ -466,7 +488,7 @@ public class UIToolkitVC: UIViewController {
             
             var screenShareImageName = "ShareScreen"
             
-            let isSharing = (ZoomVideoSDK.shareInstance()?.getShareHelper().isSharingOut() ?? false || ZoomVideoSDK.shareInstance()?.getShareHelper().isScreenSharingOut() ?? false)
+            let isSharing = (ZoomVideoSDK.shareInstance()?.getShareHelper()?.isSharingOut() ?? false || ZoomVideoSDK.shareInstance()?.getShareHelper()?.isScreenSharingOut() ?? false)
             
             screenShareImageName = isSharing ?  "ShareStop" : "ShareScreen"
             shareScreenBtn.setTitle(isSharing ? "Stop Share" : "Share", for: .normal)
@@ -477,6 +499,7 @@ public class UIToolkitVC: UIViewController {
             shareScreenBtn.imageView?.contentMode = .scaleAspectFit
             shareScreenBtn.frame.size = CGSize(width: 56, height: 56)
             shareScreenBtn.setImage(shareScreenImageUIName, for: .normal)
+
         } else {
             shareScreenBtn.isHidden = true
         }
@@ -484,6 +507,18 @@ public class UIToolkitVC: UIViewController {
     
     private func setupParticipantsBtnUI() {
         participantBtn.addBadgeToButton(badge: viewModel.getTotalParticipants())
+    }
+    
+    private func showShareScreenPicker() {
+        let broadcastPickerView = RPSystemBroadcastPickerView()
+        broadcastPickerView.preferredExtension = inputInitParams?.appGroupId
+        shareScreenBtn.addSubview(broadcastPickerView)
+        
+        for view in broadcastPickerView.subviews {
+            if let button = view as? UIButton {
+                button.sendActions(for: .allTouchEvents)
+            }
+        }
     }
     
 }
@@ -601,7 +636,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
         delegate?.onViewLoaded()
     }
     
-    public func onSessionLeave() {
+    public func onSessionLeave(_ reason: ZoomVideoSDKSessionLeaveReason) {
         if SessionManager.shared().selfLeave {
             print("Successfully leave session")
             self.delegate?.onViewDismissed()
@@ -676,10 +711,30 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
         }
     }
     
+    public func onUserShareStatusChanged(_ helper: ZoomVideoSDKShareHelper?, user: ZoomVideoSDKUser?, status: ZoomVideoSDKReceiveSharingStatus) {
+        if let user = user {
+            guard user != UserManager.shared().getLocalUser() else {
+                switch status {
+                case .start, .resume:
+                    stopSharingButton.layer.cornerRadius = 6
+                    shareScreenView.isHidden = false
+                default:
+                    shareScreenView.isHidden = true
+                }
+                return
+            }
+
+            unsubscribePreviousSpeaker()
+            viewModel.setActiveSharer(with: user)
+        }
+    }
+
+    
     public func onUserActiveAudioChanged(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?) {
         if let userArray = userArray, let myself = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf() {
             for user in userArray {
                 if (user.getID() != myself.getID()) {
+                    // doesn't this if-else mean we call changeActiveSpeaker regardless of the value of isActiveSpeakerAudioExist()?
                     if !viewModel.isActiveSpeakerAudioExist() {
                         if user.getID() != viewModel.getActiveSpeaker().getID() {
                             changeActiveSpeaker(with: user)
@@ -706,14 +761,21 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
     }
     
     private func changeActiveSpeaker(with user: ZoomVideoSDKUser) {
+        // Treat active sharer like an active speaker that does not get replaced until screen share ends
+        guard viewModel.getActiveSharer() == nil else { return }
+        
         // Unsubscribe previous active speaker videoCanvas first from ActiveSpeakerView
+        unsubscribePreviousSpeaker()
+        
+        // Then set new active speaker
+        viewModel.setActiveSpeaker(with: user)
+    }
+    
+    private func unsubscribePreviousSpeaker() {
         let currentActiveSpeaker = viewModel.getActiveSpeaker()
         let activeSpeakerIndexPath = IndexPath(row: 0, section: 0)
         guard let activeSpeakerCell = activeSpeakerGalleryCollectionView.cellForItem(at: activeSpeakerIndexPath) as? ActiveSpeakerGalleryCollectionViewCell else { return }
         currentActiveSpeaker.getVideoCanvas()?.unSubscribe(with: activeSpeakerCell)
-        
-        // Then set new active speaker
-        viewModel.setActiveSpeaker(with: user)
     }
     
     public func onUserJoin(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?) {
@@ -853,7 +915,14 @@ extension UIToolkitVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let currentCell = cell as? ActiveSpeakerGalleryCollectionViewCell else { return }
-        viewModel.updateActiveSpeakerGalleryCameraView(with: currentCell, at: indexPath.row)
+
+        if viewModel.getActiveSharer() == nil {
+            viewModel.updateActiveSpeakerGalleryCameraView(with: currentCell, at: indexPath.row)
+        } else {
+            if indexPath == IndexPath(row: 0, section: 0) {
+                viewModel.updateActiveSharerGalleryCameraView(with: currentCell, at: indexPath.row)
+            }
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -913,7 +982,11 @@ extension UIToolkitVC: UIToolkitViewModelDelegate {
         
         let username = viewModel.getActiveSpeakerGalleryName(index: 0)
         cell.nameLabel.text = username
-        viewModel.updateActiveSpeakerGalleryCameraView(with: cell, at: 0)
+        if viewModel.getActiveSharer() == nil {
+            viewModel.updateActiveSpeakerGalleryCameraView(with: cell, at: 0)
+        } else {
+            viewModel.updateActiveSharerGalleryCameraView(with: cell, at: 0)
+        }
         cell.setDefaultAvatarTitle(text: username.getDefaultName, fontSize: 64)
     }
 }

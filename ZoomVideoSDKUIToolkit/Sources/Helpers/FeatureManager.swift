@@ -43,7 +43,7 @@ class FeatureManager {
     
     private init() {
         // NOTE: The availableFeature variable controls what feature are available.
-        FeatureManager.availableFeature = [.Chat, .VirtualBackground] // .ShareScreen, .CloudRecording
+        FeatureManager.availableFeature = [.Chat, .VirtualBackground, .ShareScreen] // .CloudRecording
     }
     
     // MARK: - Accessors
