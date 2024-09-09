@@ -302,8 +302,21 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-
 @class NSString;
+
+/// The initializer parameters object contains information for initializing the ZoomVideoSDK. Objective-C class for interoperability.
+SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit14InitParamsObjC")
+@interface InitParamsObjC : NSObject
+/// (Optional) App Group ID for screen sharing.
+@property (nonatomic, copy) NSString * _Nullable appGroupId;
+/// \param appGroupId (Optional) App Group ID for screen sharing.
+///
+- (nonnull instancetype)initWithAppGroupId:(NSString * _Nullable)appGroupId OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 
 /// The session context consists of information required to start or join a session. Objective-C class for interoperability.
 SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit18SessionContextObjC")
@@ -447,7 +460,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 @interface UIToolkitVC : UIViewController
 /// The UIToolkitDelegate sends event notifications.
 @property (nonatomic, weak) id <UIToolkitDelegate> _Nullable delegate;
-- (nonnull instancetype)initWithSessionContextObject:(SessionContextObjC * _Nonnull)sessionContextObject OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSessionContextObject:(SessionContextObjC * _Nonnull)sessionContextObject initParamsObject:(InitParamsObjC * _Nullable)initParamsObject OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -480,6 +493,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 @class ZoomVideoSDKAudioHelper;
 @class ZoomVideoSDKUser;
 @class ZoomVideoSDKVideoHelper;
+@class ZoomVideoSDKShareHelper;
 @class ZoomVideoSDKUserHelper;
 @class ZoomVideoSDKChatHelper;
 @class ZoomVideoSDKChatMessage;
@@ -490,9 +504,10 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 - (void)onHostAskUnmute;
 - (void)onSessionPasswordWrong:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable, BOOL))completion;
 - (void)onSessionJoin;
-- (void)onSessionLeave;
+- (void)onSessionLeave:(ZoomVideoSDKSessionLeaveReason)reason;
 - (void)onUserAudioStatusChanged:(ZoomVideoSDKAudioHelper * _Nullable)helper user:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onUserVideoStatusChanged:(ZoomVideoSDKVideoHelper * _Nullable)helper user:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
+- (void)onUserShareStatusChanged:(ZoomVideoSDKShareHelper * _Nullable)helper user:(ZoomVideoSDKUser * _Nullable)user status:(ZoomVideoSDKReceiveSharingStatus)status;
 - (void)onUserActiveAudioChanged:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onUserJoin:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onUserLeave:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
@@ -818,8 +833,21 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-
 @class NSString;
+
+/// The initializer parameters object contains information for initializing the ZoomVideoSDK. Objective-C class for interoperability.
+SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit14InitParamsObjC")
+@interface InitParamsObjC : NSObject
+/// (Optional) App Group ID for screen sharing.
+@property (nonatomic, copy) NSString * _Nullable appGroupId;
+/// \param appGroupId (Optional) App Group ID for screen sharing.
+///
+- (nonnull instancetype)initWithAppGroupId:(NSString * _Nullable)appGroupId OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 
 /// The session context consists of information required to start or join a session. Objective-C class for interoperability.
 SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit18SessionContextObjC")
@@ -963,7 +991,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 @interface UIToolkitVC : UIViewController
 /// The UIToolkitDelegate sends event notifications.
 @property (nonatomic, weak) id <UIToolkitDelegate> _Nullable delegate;
-- (nonnull instancetype)initWithSessionContextObject:(SessionContextObjC * _Nonnull)sessionContextObject OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSessionContextObject:(SessionContextObjC * _Nonnull)sessionContextObject initParamsObject:(InitParamsObjC * _Nullable)initParamsObject OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -996,6 +1024,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 @class ZoomVideoSDKAudioHelper;
 @class ZoomVideoSDKUser;
 @class ZoomVideoSDKVideoHelper;
+@class ZoomVideoSDKShareHelper;
 @class ZoomVideoSDKUserHelper;
 @class ZoomVideoSDKChatHelper;
 @class ZoomVideoSDKChatMessage;
@@ -1006,9 +1035,10 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 - (void)onHostAskUnmute;
 - (void)onSessionPasswordWrong:(ZoomVideoSDKError (^ _Nullable)(NSString * _Nullable, BOOL))completion;
 - (void)onSessionJoin;
-- (void)onSessionLeave;
+- (void)onSessionLeave:(ZoomVideoSDKSessionLeaveReason)reason;
 - (void)onUserAudioStatusChanged:(ZoomVideoSDKAudioHelper * _Nullable)helper user:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onUserVideoStatusChanged:(ZoomVideoSDKVideoHelper * _Nullable)helper user:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
+- (void)onUserShareStatusChanged:(ZoomVideoSDKShareHelper * _Nullable)helper user:(ZoomVideoSDKUser * _Nullable)user status:(ZoomVideoSDKReceiveSharingStatus)status;
 - (void)onUserActiveAudioChanged:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onUserJoin:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;
 - (void)onUserLeave:(ZoomVideoSDKUserHelper * _Nullable)helper users:(NSArray<ZoomVideoSDKUser *> * _Nullable)userArray;

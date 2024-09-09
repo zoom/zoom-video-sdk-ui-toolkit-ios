@@ -6,6 +6,7 @@ import AVFoundation
 import AVKit
 import DeveloperToolsSupport
 import Foundation
+import ReplayKit
 import Swift
 import SwiftUI
 import UIKit
@@ -86,10 +87,20 @@ public struct SessionContext {
   @objc override dynamic public init()
   @objc deinit
 }
+public struct InitParams {
+  public var appGroupId: Swift.String?
+  public init(appGroupId: Swift.String? = nil)
+  public init(initParamsObject: ZoomVideoSDKUIToolkit.InitParamsObjC)
+}
+@objc @objcMembers public class InitParamsObjC : ObjectiveC.NSObject {
+  @objc public var appGroupId: Swift.String?
+  @objc public init(appGroupId: Swift.String? = nil)
+  @objc deinit
+}
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class UIToolkitVC : UIKit.UIViewController {
   @objc @_Concurrency.MainActor(unsafe) weak public var delegate: (any ZoomVideoSDKUIToolkit.UIToolkitDelegate)?
-  @_Concurrency.MainActor(unsafe) public init(sessionContext: ZoomVideoSDKUIToolkit.SessionContext)
-  @objc @_Concurrency.MainActor(unsafe) public init(sessionContextObject: ZoomVideoSDKUIToolkit.SessionContextObjC)
+  @_Concurrency.MainActor(unsafe) public init(sessionContext: ZoomVideoSDKUIToolkit.SessionContext, initParams: ZoomVideoSDKUIToolkit.InitParams? = nil)
+  @objc @_Concurrency.MainActor(unsafe) public init(sessionContextObject: ZoomVideoSDKUIToolkit.SessionContextObjC, initParamsObject: ZoomVideoSDKUIToolkit.InitParamsObjC? = nil)
   @objc deinit
   @_documentation(visibility: private) @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
   @_documentation(visibility: private) @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
@@ -103,9 +114,10 @@ public struct SessionContext {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onHostAskUnmute()
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionPasswordWrong(_ completion: ((Swift.String?, Swift.Bool) -> ZoomVideoSDKError)? = nil)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionJoin()
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionLeave()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onSessionLeave(_ reason: ZoomVideoSDKSessionLeaveReason)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserAudioStatusChanged(_ helper: ZoomVideoSDKAudioHelper?, user userArray: [ZoomVideoSDKUser]?)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserVideoStatusChanged(_ helper: ZoomVideoSDKVideoHelper?, user userArray: [ZoomVideoSDKUser]?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserShareStatusChanged(_ helper: ZoomVideoSDKShareHelper?, user: ZoomVideoSDKUser?, status: ZoomVideoSDKReceiveSharingStatus)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserActiveAudioChanged(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserJoin(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onUserLeave(_ helper: ZoomVideoSDKUserHelper?, users userArray: [ZoomVideoSDKUser]?)

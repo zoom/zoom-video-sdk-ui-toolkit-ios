@@ -12,6 +12,7 @@ The UI toolkit enables you to instantly start using a core set of Video SDK feat
 - Participant management (by host and manager roles)
 - Virtual background
 - Portrait and Landscape support
+- Screen sharing (full-screen)
 
 The use of this UI Took Kit is subject to the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
 
@@ -24,7 +25,7 @@ The use of this UI Took Kit is subject to the [Video SDK terms of service](https
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapod. The current branch you are viewing right now is the *main* branch which consists of all 3 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background feature, you can use the *essential* branch instead of the *main* branch.
+Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapod. The current branch you are viewing right now is the *main* branch which consists of all 5 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, ZoomVideoSDKScreenShare, CptShare, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background or screen sharing features, you can use the *essential* branch instead of the *main* branch.
 
 ```
 https://github.com/zoom/videosdk-ui-toolkit-ios.git
