@@ -48,14 +48,15 @@ typedef NS_ENUM(NSUInteger,ZoomVideoSDKError)
     Errors_Session_Already_In_Progress,
     Errors_Session_Dont_Support_SessionType,
     Errors_Session_You_Have_No_Share,
-    Errors_Session_Reconncting,
-    Errors_Session_Disconncting,
+    Errors_Session_Reconnecting,
+    Errors_Session_Disconnecting,
     Errors_Session_Not_Started = 2010,
     Errors_Session_Need_Password,
     Errors_Session_Password_Wrong,
     Errors_Session_Remote_DB_Error,
     Errors_Session_Invalid_Param,
     Errors_Session_Client_Incompatible,
+    Errors_Session_Account_FreeMinutesExceeded,
     Errors_Session_Audio_Error = 3000,
     Errors_Session_Audio_No_Microphone,
     Errors_Session_Audio_No_Speaker,
@@ -104,7 +105,13 @@ typedef NS_ENUM(NSUInteger,ZoomVideoSDKError)
     
     Errors_Session_Filetransfer_UnknownError = 7500,
     Errors_Session_Filetransfer_FileTypeBlocked,
-    Errors_Session_Filetransfer_FileSizelimited
+    Errors_Session_Filetransfer_FileSizelimited,
+    
+    Errors_Spotlight_NotEnoughUsers = 7600,
+    Errors_Spotlight_ToMuchSpotlightedUsers,
+    Errors_Spotlight_UserCannotBeSpotlighted,
+    Errors_Spotlight_UserWithoutVideo,
+    Errors_Spotlight_UserNotSpotlighted
 };
 
 /*!
@@ -114,7 +121,7 @@ typedef NS_ENUM(NSUInteger,ZoomVideoSDKAudioType) {
     ZoomVideoSDKAudioType_None   = 0,
     ZoomVideoSDKAudioType_VOIP,
     ZoomVideoSDKAudioType_TELEPHONY,
-    ZoomVideoSDKAudioType_Unknow,
+    ZoomVideoSDKAudioType_Unknown,
 };
 
 /*!
@@ -458,6 +465,14 @@ typedef NS_ENUM(NSInteger, ZoomVideoSDKFileTransferStatus) {
     FileTransferState_Transfering,      /// The file transfer is in progress
     FileTransferState_TransferFailed,   /// The file transfer failed
     FileTransferState_TransferDone,     /// The file transfer completed successfully
+};
+
+typedef NS_ENUM(NSInteger, ZoomVideoSDKSessionLeaveReason) {
+    ZoomVideoSDKSessionLeaveReason_Unknown = 0,     /// Unknown.
+    ZoomVideoSDKSessionLeaveReason_BySelf,          /// Leave session by self.
+    ZoomVideoSDKSessionLeaveReason_KickByHost,      /// Kicked by host.
+    ZoomVideoSDKSessionLeaveReason_EndByHost,       /// Ended by host.
+    ZoomVideoSDKSessionLeaveReason_NetworkError,    /// Network error.
 };
 
 #endif /* ZoomVideoSDKConstants_h */

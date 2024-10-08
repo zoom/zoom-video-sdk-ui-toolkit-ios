@@ -3,15 +3,16 @@
 The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
 
 The UI toolkit enables you to instantly start using a core set of Video SDK features in your app, including:
+- Feature configuration
 - Join and leave sessions
 - Video on or off
 - Front or back camera
 - Mute and unmute
 - Session chat (group and private)
 - Active speaker and gallery view
-- Participant management (by host and manager roles)
+- Participant management (with host and manager role)
 - Virtual background
-- Portrait and Landscape support
+- Portrait and landscape support
 - Screen sharing (full-screen)
 
 The use of this UI Toolkit is subject to the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
@@ -25,7 +26,7 @@ The use of this UI Toolkit is subject to the [Video SDK terms of service](https:
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapod. The current branch you are viewing right now is the *essential* branch and we do have another branch named *main* that consists of all 5 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, ZoomVideoSDKScreenShare, CptShare, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background feature, you can use the *essential* branch instead of the *main* branch.
+Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapod. The current branch you are viewing right now is the *essential* branch and we do have another branch named *main* that consists of all 5 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, ZoomVideoSDKScreenShare, CptShare, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background and screen sharing feature, you can use the *essential* branch instead of the *main* branch.
 
 ```
 https://github.com/zoom/videosdk-ui-toolkit-ios.git
@@ -60,6 +61,9 @@ let sessionContext = SessionContext(jwt: String, sessionName: String, username: 
 
 // OR if password is required
 let sessionContext = SessionContext(jwt: String, sessionName: String, sessionPassword: String?, username: String)
+
+// By default the UI Toolkit comes with all available features (with some features require additional license). If you will like to only use some of these features, you will need to add the features you want under the features parameter.
+let sessionContext  = SessionContext(jwt: String, sessionName: String, username: String), initParams: InitParams(features: [UIToolkitFeature]?))
 ```
 
 ### Step 2. Create the Zoom Video View Controller and present it
