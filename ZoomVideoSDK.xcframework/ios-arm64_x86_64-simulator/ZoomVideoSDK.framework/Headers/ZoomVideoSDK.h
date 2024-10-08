@@ -91,6 +91,10 @@
  @brief Local video on or off
  */
 @property (assign, nonatomic) BOOL localVideoOn;
+/*!
+ @brief set the multitaskingCameraAccessEnabled for AVCaptureSession of local camera. For more informaton, refer to https://developer.apple.com/documentation/avfoundation/avcapturesession/4013228-multitaskingcameraaccesssupporte
+ */
+@property (assign, nonatomic) BOOL multitaskingCameraAccessEnabled;
 
 @end
 
@@ -260,7 +264,7 @@
 
 /**
  @brief Clean all exported logs.
- @return If the function succeeds, it will return ZMVideoSDKErrors_Success. Otherwise failed.
+ @return If the function succeeds, it will return Errors_Success. Otherwise failed.
  */
 - (ZoomVideoSDKError)cleanAllExportedLogs;
 /*!
