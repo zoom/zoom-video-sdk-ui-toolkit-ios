@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/ZoomVideoSDKUIToolkit-Swift.h</key>
 		<data>
-		FBDj7XsdZv4EW6AE9m+UgZzAp8I=
+		Sn62m9EoWPKhsyIKUZrl5iCodAM=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Y0UNMK+KihScWwMipBdsIQtgoQ8=
+		gHCqr9RtpVRN1UkSDt000O2wEoA=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		6WabNK1Fba5df7dYklbxPOF4kn0=
+		7z88glhsLEUDAJXEmJM50qo6U+0=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -62,19 +62,19 @@
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		6WabNK1Fba5df7dYklbxPOF4kn0=
+		7z88glhsLEUDAJXEmJM50qo6U+0=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		DGIuBjZ/AiNBdCBzAx4HCMM3hcE=
+		xXZY+pt4gpKsI9rtXIen31wBZHY=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Y0UNMK+KihScWwMipBdsIQtgoQ8=
+		gHCqr9RtpVRN1UkSDt000O2wEoA=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		/xhprmgsZoeMcc1UxX0N2nG9F4Y=
+		gKqCtKfTzhU1TLupOMyl3CTZQfg=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -82,11 +82,11 @@
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		/xhprmgsZoeMcc1UxX0N2nG9F4Y=
+		gKqCtKfTzhU1TLupOMyl3CTZQfg=
 		</data>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		LDywSB5xbCaA8ph2rWy/5PfTggc=
+		4fD7erpCOYw7erH+0KMYlVrRxSY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -207,7 +207,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IQ3boE5M2gFqcqlBthBR+j4dZHjOdpDJcNy1sNko9AY=
+			W+I6GJW7+4BXFHzb2fh6gYUyUxMIpLC/28Kr8Imd1ro=
 			</data>
 		</dict>
 		<key>Loader.nib</key>
@@ -221,14 +221,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sP7JQCjaBwS0lsnQh23FMUdkRZF5Vy02u4Jo1FQg3AA=
+			xjYB1AqJBfwcKMpz/gEpEJt/vizIva8sBiE4oOsQe6Y=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ecEp4QY3OAhRHZmPGnC6UDg8Na2l3Wqs/xN1YUFnBAU=
+			kyVsuJyiwo3lZi6AIWynjcDPFYhvQxjPwLIhmQ+hKZU=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -242,28 +242,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ecEp4QY3OAhRHZmPGnC6UDg8Na2l3Wqs/xN1YUFnBAU=
+			kyVsuJyiwo3lZi6AIWynjcDPFYhvQxjPwLIhmQ+hKZU=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YFmbnL2ohSAc9bb3K4ps1bzdjPsmM8jxDPuJg0kxzXw=
+			X7fEE0ghx8+eiyvAuDzIMn7sdKRoTUZdXI/miCUv718=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sP7JQCjaBwS0lsnQh23FMUdkRZF5Vy02u4Jo1FQg3AA=
+			xjYB1AqJBfwcKMpz/gEpEJt/vizIva8sBiE4oOsQe6Y=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JPsiAj+3gd+vmPVhnN+C0xhY2MXANzy4J4BMtqsUhyg=
+			mAoH29golkHPxomIeNU+wbvnsHt68OtdRL4ATpH/d0c=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -277,14 +277,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JPsiAj+3gd+vmPVhnN+C0xhY2MXANzy4J4BMtqsUhyg=
+			mAoH29golkHPxomIeNU+wbvnsHt68OtdRL4ATpH/d0c=
 			</data>
 		</dict>
 		<key>Modules/ZoomVideoSDKUIToolkit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xSc+lHOxrDVb0pBURSWZZvJ1DUgaLTjs7UQJWsBeLBo=
+			1hyUqJMMfW1TfN6vQf0LidWIlY+NGTxmgFb2wXNq14g=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

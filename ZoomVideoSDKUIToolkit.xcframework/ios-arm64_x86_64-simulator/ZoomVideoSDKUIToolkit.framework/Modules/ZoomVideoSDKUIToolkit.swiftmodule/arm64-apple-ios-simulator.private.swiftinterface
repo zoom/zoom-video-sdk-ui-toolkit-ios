@@ -128,6 +128,8 @@ public struct InitParams {
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func onUserNameChanged(_ user: ZoomVideoSDKUser?)
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func onUserHostChanged(_ helper: ZoomVideoSDKUserHelper?, users user: ZoomVideoSDKUser?)
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func onUserManagerChanged(_ user: ZoomVideoSDKUser?)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func onCloudRecordingStatus(_ status: ZoomVideoSDKRecordingStatus, recordAgreementHandler handler: ZoomVideoSDKRecordAgreementHandler?)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func onSpotlightVideoChanged(_ videoHelper: ZoomVideoSDKVideoHelper?, userList: [ZoomVideoSDKUser]?)
 }
 @_documentation(visibility: private) extension ZoomVideoSDKUIToolkit.UIToolkitVC : UIKit.UICollectionViewDelegate, UIKit.UICollectionViewDataSource, UIKit.UICollectionViewDelegateFlowLayout {
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
@@ -146,6 +148,7 @@ public enum UIToolkitFeature : Swift.CaseIterable {
   case Users
   case Chat
   case VirtualBackground
+  case CloudRecording
   case Settings
   public static func == (a: ZoomVideoSDKUIToolkit.UIToolkitFeature, b: ZoomVideoSDKUIToolkit.UIToolkitFeature) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)

@@ -5463,6 +5463,114 @@
           },
           {
             "kind": "Function",
+            "name": "onCloudRecordingStatus",
+            "printedName": "onCloudRecordingStatus(_:recordAgreementHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ZoomVideoSDKRecordingStatus",
+                "printedName": "ZoomVideoSDK.ZoomVideoSDKRecordingStatus",
+                "usr": "c:@E@ZoomVideoSDKRecordingStatus"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ZoomVideoSDK.ZoomVideoSDKRecordAgreementHandler?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ZoomVideoSDKRecordAgreementHandler",
+                    "printedName": "ZoomVideoSDK.ZoomVideoSDKRecordAgreementHandler",
+                    "usr": "c:objc(cs)ZoomVideoSDKRecordAgreementHandler"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@ZoomVideoSDKUIToolkit@objc(cs)UIToolkitVC(im)onCloudRecordingStatus:recordAgreementHandler:",
+            "mangledName": "$s21ZoomVideoSDKUIToolkit11UIToolkitVCC22onCloudRecordingStatus_22recordAgreementHandlerySo0ab12SDKRecordingI0V_So0ab9SDKRecordkL0CSgtF",
+            "moduleName": "ZoomVideoSDKUIToolkit",
+            "objc_name": "onCloudRecordingStatus:recordAgreementHandler:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onSpotlightVideoChanged",
+            "printedName": "onSpotlightVideoChanged(_:userList:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ZoomVideoSDK.ZoomVideoSDKVideoHelper?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ZoomVideoSDKVideoHelper",
+                    "printedName": "ZoomVideoSDK.ZoomVideoSDKVideoHelper",
+                    "usr": "c:objc(cs)ZoomVideoSDKVideoHelper"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[ZoomVideoSDK.ZoomVideoSDKUser]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[ZoomVideoSDK.ZoomVideoSDKUser]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ZoomVideoSDKUser",
+                        "printedName": "ZoomVideoSDK.ZoomVideoSDKUser",
+                        "usr": "c:objc(cs)ZoomVideoSDKUser"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@ZoomVideoSDKUIToolkit@objc(cs)UIToolkitVC(im)onSpotlightVideoChanged:userList:",
+            "mangledName": "$s21ZoomVideoSDKUIToolkit11UIToolkitVCC011onSpotlightB7Changed_8userListySo0aB14SDKVideoHelperCSg_SaySo0aB7SDKUserCGSgtF",
+            "moduleName": "ZoomVideoSDKUIToolkit",
+            "objc_name": "onSpotlightVideoChanged:userList:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "scrollViewDidScroll",
             "printedName": "scrollViewDidScroll(_:)",
             "children": [
@@ -6152,6 +6260,43 @@
           },
           {
             "kind": "Var",
+            "name": "CloudRecording",
+            "printedName": "CloudRecording",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ZoomVideoSDKUIToolkit.UIToolkitFeature.Type) -> ZoomVideoSDKUIToolkit.UIToolkitFeature",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIToolkitFeature",
+                    "printedName": "ZoomVideoSDKUIToolkit.UIToolkitFeature",
+                    "usr": "s:21ZoomVideoSDKUIToolkit16UIToolkitFeatureO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ZoomVideoSDKUIToolkit.UIToolkitFeature.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIToolkitFeature",
+                        "printedName": "ZoomVideoSDKUIToolkit.UIToolkitFeature",
+                        "usr": "s:21ZoomVideoSDKUIToolkit16UIToolkitFeatureO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:21ZoomVideoSDKUIToolkit16UIToolkitFeatureO14CloudRecordingyA2CmF",
+            "mangledName": "$s21ZoomVideoSDKUIToolkit16UIToolkitFeatureO14CloudRecordingyA2CmF",
+            "moduleName": "ZoomVideoSDKUIToolkit"
+          },
+          {
+            "kind": "Var",
             "name": "Settings",
             "printedName": "Settings",
             "children": [
@@ -6185,10 +6330,7 @@
             "declKind": "EnumElement",
             "usr": "s:21ZoomVideoSDKUIToolkit16UIToolkitFeatureO8SettingsyA2CmF",
             "mangledName": "$s21ZoomVideoSDKUIToolkit16UIToolkitFeatureO8SettingsyA2CmF",
-            "moduleName": "ZoomVideoSDKUIToolkit",
-            "declAttributes": [
-              "RawDocComment"
-            ]
+            "moduleName": "ZoomVideoSDKUIToolkit"
           },
           {
             "kind": "Function",
@@ -7772,133 +7914,133 @@
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "BooleanLiteral",
-      "offset": 44015,
+      "offset": 44765,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44081,
+      "offset": 44831,
       "length": 3,
       "value": "243"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44085,
+      "offset": 44835,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44097,
+      "offset": 44847,
       "length": 3,
       "value": "243"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44101,
+      "offset": 44851,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44112,
+      "offset": 44862,
       "length": 3,
       "value": "243"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44116,
+      "offset": 44866,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44128,
+      "offset": 44878,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "BooleanLiteral",
-      "offset": 44302,
+      "offset": 45052,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "BooleanLiteral",
-      "offset": 44353,
+      "offset": 45103,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44403,
+      "offset": 45153,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44471,
+      "offset": 45221,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44517,
+      "offset": 45267,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44605,
+      "offset": 45355,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44651,
+      "offset": 45401,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44820,
+      "offset": 45570,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44824,
+      "offset": 45574,
       "length": 2,
       "value": "64"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 44829,
+      "offset": 45579,
       "length": 2,
       "value": "48"
     },
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/UIToolkitVC.swift",
       "kind": "BooleanLiteral",
-      "offset": 44878,
+      "offset": 45628,
       "length": 4,
       "value": "true"
     },
@@ -7912,7 +8054,7 @@
     {
       "filePath": "\/Users\/tanboonjun\/ZoomVideoSDKUIKit\/ZoomVideoSDKUIToolkit\/Sources\/Helpers\/FeatureManager.swift",
       "kind": "Array",
-      "offset": 1118,
+      "offset": 1098,
       "length": 2,
       "value": "[]"
     },

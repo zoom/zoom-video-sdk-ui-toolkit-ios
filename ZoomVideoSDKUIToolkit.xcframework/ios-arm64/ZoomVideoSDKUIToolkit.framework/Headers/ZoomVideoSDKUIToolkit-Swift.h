@@ -498,6 +498,7 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 @class ZoomVideoSDKUserHelper;
 @class ZoomVideoSDKChatHelper;
 @class ZoomVideoSDKChatMessage;
+@class ZoomVideoSDKRecordAgreementHandler;
 
 @interface UIToolkitVC (SWIFT_EXTENSION(ZoomVideoSDKUIToolkit)) <ZoomVideoSDKDelegate>
 - (void)onError:(ZoomVideoSDKError)ErrorType detail:(NSInteger)details;
@@ -517,6 +518,8 @@ SWIFT_CLASS("_TtC21ZoomVideoSDKUIToolkit11UIToolkitVC")
 - (void)onUserNameChanged:(ZoomVideoSDKUser * _Nullable)user;
 - (void)onUserHostChanged:(ZoomVideoSDKUserHelper * _Nullable)helper users:(ZoomVideoSDKUser * _Nullable)user;
 - (void)onUserManagerChanged:(ZoomVideoSDKUser * _Nullable)user;
+- (void)onCloudRecordingStatus:(ZoomVideoSDKRecordingStatus)status recordAgreementHandler:(ZoomVideoSDKRecordAgreementHandler * _Nullable)handler;
+- (void)onSpotlightVideoChanged:(ZoomVideoSDKVideoHelper * _Nullable)videoHelper userList:(NSArray<ZoomVideoSDKUser *> * _Nullable)userList;
 @end
 
 
