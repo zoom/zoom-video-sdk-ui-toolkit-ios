@@ -11,15 +11,18 @@ import UIKit
 public struct InitParams {
     /// (Optional) App Group ID for screen sharing.
     public var appGroupId: String?
+    public var features: [UIToolkitFeature]?
 
     /// - Parameters:
     ///   - appGroupId: (Optional) App Group ID for screen sharing.
-    public init(appGroupId: String? = nil) {
+    public init(appGroupId: String? = nil, features: [UIToolkitFeature]? = nil) {
         self.appGroupId = appGroupId
+        self.features = features
     }
 
     public init(initParamsObject: InitParamsObjC) {
         self.appGroupId = initParamsObject.appGroupId
+        self.features = initParamsObject.features
     }
 }
 
@@ -27,10 +30,12 @@ public struct InitParams {
 @objcMembers public class InitParamsObjC: NSObject {
     /// (Optional) App Group ID for screen sharing.
     public var appGroupId: String?
+    public var features: [UIToolkitFeature]?
     
     /// - Parameters:
     ///   - appGroupId: (Optional) App Group ID for screen sharing.
-    public init(appGroupId: String? = nil) {
+    public init(appGroupId: String? = nil, features: [UIToolkitFeature]? = nil) {
         self.appGroupId = appGroupId
+        self.features = features
     }
 }

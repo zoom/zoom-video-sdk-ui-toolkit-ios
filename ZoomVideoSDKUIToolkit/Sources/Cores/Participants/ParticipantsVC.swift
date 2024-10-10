@@ -119,6 +119,7 @@ class ParticipantsVC: UIViewController {
         }
         
         ctaBtn.layer.cornerRadius = 6
+        ctaBtn2.layer.cornerRadius = 6
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

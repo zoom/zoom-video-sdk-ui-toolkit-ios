@@ -92,6 +92,14 @@ public class UIToolkitVC: UIViewController {
     @_documentation(visibility:private)
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // If inputInitParams.features is not given, the default is to set all features as available.
+        if let features = inputInitParams?.features {
+            FeatureManager.shared().setAvailableFeature(with: features)
+        } else {
+            FeatureManager.shared().setAllAvailableFeature()
+        }
+        
         setupUI()
         viewModel = UIToolkitViewModel()
         viewModel.delegate = self
@@ -159,30 +167,7 @@ public class UIToolkitVC: UIViewController {
         setupLocalUserView()
         setupActiveSpeakerGalleryView()
         
-        /* Note!
-         Have to manually set title with "" to override the default "button" from appearing even when design is set to nil.
-         For more info: https://stackoverflow.com/questions/73458504/swift-uibutton-empty-in-storyboard-but-has-text-while-running
-         */
-        
-        // Top Nav Bar
-        changeCameraBtn.setTitle("", for: .normal)
-        let changeCameraImage = UIImage(named: "Camera", in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate).resizedImage(Size: CGSize(width: 28, height: 28))
-        changeCameraBtn.setImage(changeCameraImage, for: .normal)
-        changeCameraBtn.imageView?.contentMode = .scaleAspectFit
-        changeCameraBtn.tintColor = .black
-        endSessionBtn.setTitle("", for: .normal)
-        endSessionBtn.layer.cornerRadius = 6
-        
-        // Bottom Nav Bar
-        micBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        videoBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        shareScreenBtn.isHidden = true
-        shareScreenBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        participantBtn.setTitle("Participants", for: .normal)
-        participantBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        participantBtn.addBadgeToButton(badge: "1")
-        moreBtn.setTitle("More", for: .normal)
-        moreBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        setupTopNavBar()
     }
     
     private func setupNotifications() {
@@ -422,6 +407,26 @@ public class UIToolkitVC: UIViewController {
     
     // MARK: Private Method
     
+    private func setupTopNavBar() {
+        /* Note!
+         Have to manually set title with "" to override the default "button" from appearing even when design is set to nil.
+         For more info: https://stackoverflow.com/questions/73458504/swift-uibutton-empty-in-storyboard-but-has-text-while-running
+         */
+        
+        // Top Nav Bar is stack view, cannot simply use isHidden to hide changeCameraBtn
+        changeCameraBtn.setTitle("", for: .normal)
+        changeCameraBtn.isEnabled = FeatureManager.shared().checkIfFeatureIsAvailable(with: .Video)
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Video) {
+            let changeCameraImage = UIImage(named: "Camera", in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate).resizedImage(Size: CGSize(width: 28, height: 28))
+            changeCameraBtn.setImage(changeCameraImage, for: .normal)
+            changeCameraBtn.imageView?.contentMode = .scaleAspectFit
+            changeCameraBtn.tintColor = .black
+        }
+         
+        endSessionBtn.setTitle("", for: .normal)
+        endSessionBtn.layer.cornerRadius = 6
+    }
+    
     private func updateLocalUserVideoView() {
         viewModel.updateLocalUserCameraView(with: localUserView)
         localUserLabel.text = viewModel.getLocalUser().getName()?.getDefaultName
@@ -432,20 +437,27 @@ public class UIToolkitVC: UIViewController {
         setupVideoBtnUI()
         setupShareScreenBtnUI()
         setupParticipantsBtnUI()
+        setupMoreBtnUI()
     }
     
     private func setupMicBtnUI() {
-        var audioImageName = "Mic"
-        
-        if let isMuted = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.audioStatus()?.isMuted {
-            audioImageName = isMuted ? "Mic-Disabled" : "Mic"
-            micBtn.setTitle(isMuted ? "Unmute" : "Mute", for: .normal)
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Audio) {
+            micBtn.isHidden = false
+            micBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+            var audioImageName = "Mic"
+            
+            if let isMuted = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.audioStatus()?.isMuted {
+                audioImageName = isMuted ? "Mic-Disabled" : "Mic"
+                micBtn.setTitle(isMuted ? "Unmute" : "Mute", for: .normal)
+            }
+            
+            let audioUIImage = UIImage(named: audioImageName, in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate)
+            
+            micBtn.frame.size = CGSize(width: 56, height: 56)
+            micBtn.setImage(audioUIImage, for: .normal)
+        } else {
+            micBtn.isHidden = true
         }
-        
-        let audioUIImage = UIImage(named: audioImageName, in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate)
-        
-        micBtn.frame.size = CGSize(width: 56, height: 56)
-        micBtn.setImage(audioUIImage, for: .normal)
     }
     
     private func animateMicBtnUI() {
@@ -469,23 +481,29 @@ public class UIToolkitVC: UIViewController {
     }
     
     private func setupVideoBtnUI() {
-        var videoImageName = "Video"
-        
-        if let videoIsOn = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.getVideoCanvas()?.videoStatus()?.on {
-            videoImageName = videoIsOn ?  "Video" : "Video-Disabled"
-            videoBtn.setTitle(videoIsOn ? "Stop Video" : "Start Video", for: .normal)
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Video) {
+            videoBtn.isHidden = false
+            videoBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+            var videoImageName = "Video"
+            
+            if let videoIsOn = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.getVideoCanvas()?.videoStatus()?.on {
+                videoImageName = videoIsOn ?  "Video" : "Video-Disabled"
+                videoBtn.setTitle(videoIsOn ? "Stop Video" : "Start Video", for: .normal)
+            }
+            
+            let videoImageUIName = UIImage(named: videoImageName, in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate)
+            
+            videoBtn.frame.size = CGSize(width: 56, height: 56)
+            videoBtn.setImage(videoImageUIName, for: .normal)
+        } else {
+            videoBtn.isHidden = true
         }
-        
-        let videoImageUIName = UIImage(named: videoImageName, in: Bundle(for: type(of: self)), compatibleWith: .none)?.withRenderingMode(.alwaysTemplate)
-        
-        videoBtn.frame.size = CGSize(width: 56, height: 56)
-        videoBtn.setImage(videoImageUIName, for: .normal)
     }
     
     private func setupShareScreenBtnUI() {
         if FeatureManager.shared().checkIfFeatureIsAvailable(with: .ShareScreen) {
             shareScreenBtn.isHidden = false
-            
+            shareScreenBtn.titleLabel?.adjustsFontSizeToFitWidth = true
             var screenShareImageName = "ShareScreen"
             
             let isSharing = (ZoomVideoSDK.shareInstance()?.getShareHelper()?.isSharingOut() ?? false || ZoomVideoSDK.shareInstance()?.getShareHelper()?.isScreenSharingOut() ?? false)
@@ -506,7 +524,14 @@ public class UIToolkitVC: UIViewController {
     }
     
     private func setupParticipantsBtnUI() {
-        participantBtn.addBadgeToButton(badge: viewModel.getTotalParticipants())
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Users) {
+            participantBtn.isHidden = false
+            participantBtn.setTitle("Participants", for: .normal)
+            participantBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+            participantBtn.addBadgeToButton(badge: viewModel.getTotalParticipants())
+        } else {
+            participantBtn.isHidden = true
+        }
     }
     
     private func showShareScreenPicker() {
@@ -521,6 +546,11 @@ public class UIToolkitVC: UIViewController {
         }
     }
     
+    private func setupMoreBtnUI() {
+        moreBtn.isHidden = !MoreOptionManager.shared().canShowMoreBtn()
+        moreBtn.setTitle("More", for: .normal)
+        moreBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+    }
 }
 
 // MARK: ZoomVideoSDKDelegate
