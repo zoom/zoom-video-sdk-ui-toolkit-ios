@@ -84,6 +84,7 @@ class BadgeButton: UIButton {
                 let y = -(Double(badgeSize.height) / 2) - 10 + vertical!
                 badgeLabel.frame = CGRect(x: x, y: y, width: width, height: height)
             } else {
+                self.layoutIfNeeded()
                 let x = self.frame.width - CGFloat((self.frame.width / 2.0)) + CGFloat(self.currentImage?.size.width ?? 0 / 2.0) - 5
                 let y = CGFloat(-(height / 2.0) + 16)
                 badgeLabel.frame = CGRect(x: x, y: y, width: CGFloat(width), height: CGFloat(height))

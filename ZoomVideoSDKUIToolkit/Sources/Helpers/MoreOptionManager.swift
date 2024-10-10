@@ -79,28 +79,35 @@ class MoreOptionManager {
         return moreOptionManager
     }
     
+    func canShowMoreBtn() -> Bool {
+        return FeatureManager.shared().checkIfFeatureIsAvailable(with: .Audio) || FeatureManager.shared().checkIfFeatureIsAvailable(with: .Chat) || FeatureManager.shared().checkIfFeatureIsAvailable(with: .VirtualBackground) || FeatureManager.shared().checkIfFeatureIsAvailable(with: .Settings)
+        // FeatureManager.shared().checkIfFeatureIsAvailable(with: .CloudRecording)
+    }
+    
     func showAvailableOptionUI() {
         guard let vc = UIApplication.topViewController() else { return }
         sheetView.ctaStackView.removeAllArrangedSubviews()
         
-        sheetView.ctaStackView.addArrangedSubview(getAudioMicButton())
+        /* 
+         Currently we are showing all the available features under the "more" option menu.
+         In the event that we will like developers to control each of these under "more", we will simply just create another local variable to be placed under MoreOptionManager
+         */
         
-        let availableFeature = FeatureManager.shared().getAvailableFeature()
-        
-        for feature in availableFeature {
-            switch feature {
-            case .Chat:
-                sheetView.ctaStackView.addArrangedSubview(getChatButton())
-            case .VirtualBackground:
-                sheetView.ctaStackView.addArrangedSubview(getVirtualBackgroundButton())
-            case .CloudRecording:
-                sheetView.ctaStackView.addArrangedSubview(getCloudRecordingButton())
-            case .ShareScreen:
-                continue
-            }
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Audio) {
+            sheetView.ctaStackView.addArrangedSubview(getAudioMicButton())
         }
-        
-        sheetView.ctaStackView.addArrangedSubview(getSettingsButton())
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Chat) {
+            sheetView.ctaStackView.addArrangedSubview(getChatButton())
+        }
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .VirtualBackground) {
+            sheetView.ctaStackView.addArrangedSubview(getVirtualBackgroundButton())
+        }
+//        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .CloudRecording) {
+//            sheetView.ctaStackView.addArrangedSubview(getCloudRecordingButton())
+//        }
+        if FeatureManager.shared().checkIfFeatureIsAvailable(with: .Settings) {
+            sheetView.ctaStackView.addArrangedSubview(getSettingsButton())
+        }
         
         vc.view.addSubview(sheetView)
         sheetView.fitLayoutTo(view: vc.view)
@@ -243,7 +250,7 @@ class MoreOptionManager {
     // MARK: Chat Privilege related
 
     func getChatSettings() -> ZoomVideoSDKChatPrivilegeType? {
-        if let currentChatPrivilege = ZoomVideoSDK.shareInstance()?.getChatHelper().getChatPrivilege(), (currentChatPrivilege == .everyone_Publicly_And_Privately || currentChatPrivilege == .no_One) {
+        if let currentChatPrivilege = ZoomVideoSDK.shareInstance()?.getChatHelper()?.getChatPrivilege(), (currentChatPrivilege == .everyone_Publicly_And_Privately || currentChatPrivilege == .no_One) {
             return currentChatPrivilege
         } else {
             return nil
@@ -287,7 +294,7 @@ class MoreOptionManager {
         return false
     }
     
-    // MARK: Virtual Background
+    // MARK: Virtual Background - Saving for future in the event that virtual background is a standalone feature under Settings
     
     public func isVirtualBackgroundEnabled() -> Bool {
         guard let vbHelper = ZoomVideoSDK.shareInstance()?.getVirtualBackgroundHelper() else { return false }
@@ -297,7 +304,7 @@ class MoreOptionManager {
     // MARK: Share Screen
     
     private func showShareScreenInfo() {
-        guard let userIsHost = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.isHost(), userIsHost, let currentIsShareLocked = ZoomVideoSDK.shareInstance()?.getShareHelper().isShareLocked() else { return }
+        guard let userIsHost = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.isHost(), userIsHost, let currentIsShareLocked = ZoomVideoSDK.shareInstance()?.getShareHelper()?.isShareLocked() else { return }
         let alertTitle = "Share feature is \(currentIsShareLocked ? "Disabled" : "Enabled"): Tap to change."
 //        alert.addAction(UIAlertAction(title: alertTitle, style: .default, handler: { _ in
 //            // TODO: Add Share Sceen Feature

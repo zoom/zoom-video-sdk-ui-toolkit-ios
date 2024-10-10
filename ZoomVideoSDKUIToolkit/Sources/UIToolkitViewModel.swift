@@ -25,6 +25,7 @@ class UIToolkitViewModel {
             }
         }
     }
+    private var activeSharer: ZoomVideoSDKUser?
     
     // The activeSpeakerGalleryList list is used to populate the collection view used to show active speaker and gallery view
     // Therefore it contains both local user and remote users.
@@ -41,7 +42,7 @@ class UIToolkitViewModel {
         sdkInstance = ZoomVideoSDK.shareInstance()
     }
     
-    public func setup(with inputSessionContext: SessionContext) {
+    public func setup(with inputSessionContext: SessionContext, inputInitParams: InitParams? = nil) {
         guard let topVC = UIApplication.topViewController() as? UIToolkitVC else { return }
         if inputSessionContext.jwt.isEmpty {
             ErrorManager.shared().getDelegate()?.onError(.EmptySessionToken)
@@ -62,6 +63,9 @@ class UIToolkitViewModel {
         let initParams = ZoomVideoSDKInitParams()
         initParams.domain = domain
         initParams.enableLog = true
+        
+        // revise above parameters and set them here if we expose more params in the future
+        initParams.appGroupId = inputInitParams?.appGroupId
         
         let sdkInitReturnStatus = ZoomVideoSDK.shareInstance()?.initialize(initParams)
         
@@ -152,7 +156,7 @@ class UIToolkitViewModel {
     public func updateLocalUserCameraView(with view: UIView) {
         guard let localUserVideoCanvas = localUser.getVideoCanvas(), let localUserVideoIsOn = localUserVideoCanvas.videoStatus()?.on else { return }
         if localUserVideoIsOn {
-            sdkInstance.getVideoHelper().rotateMyVideo(UIDevice.current.orientation)
+            sdkInstance.getVideoHelper()?.rotateMyVideo(UIDevice.current.orientation)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 switch UIDevice.current.orientation {
                 case .landscapeLeft, .landscapeRight:
@@ -185,6 +189,10 @@ class UIToolkitViewModel {
         return activeSpeaker
     }
     
+    public func getActiveSharer() -> ZoomVideoSDKUser? {
+        return activeSharer
+    }
+    
     public func isActiveSpeakerMyself() -> Bool {
         guard let myself = sdkInstance.getSession()?.getMySelf() else { return false }
         return myself == activeSpeaker
@@ -193,6 +201,11 @@ class UIToolkitViewModel {
     public func setActiveSpeaker(with user: ZoomVideoSDKUser) {
         activeSpeakerAudioExist = true
         activeSpeaker = user
+    }
+    
+    public func setActiveSharer(with user: ZoomVideoSDKUser) {
+        activeSharer = user
+        setActiveSpeaker(with: user)
     }
     
     // User Management
@@ -279,6 +292,28 @@ class UIToolkitViewModel {
         guard let audioIsMuted = currentUser.audioStatus()?.isMuted else { return }
         cell.micImageView.isHidden = !audioIsMuted
         cell.nameLabel.text = currentUser.getName()
+    }
+    
+    public func updateActiveSharerGalleryCameraView(with cell: ActiveSpeakerGalleryCollectionViewCell, at index: Int) {
+        guard index < activeSpeakerGalleryList.count else { return }
+        let currentUser = activeSpeakerGalleryList[index]
+        guard let currentUserShareCanvas = currentUser.getShareCanvas(), let currentUserShareStatus = currentUserShareCanvas.shareStatus()?.sharingStatus else { return }
+        
+        switch currentUserShareStatus {
+        case .start, .resume:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                switch UIDevice.current.orientation {
+                case .landscapeLeft, .landscapeRight:
+                    currentUserShareCanvas.subscribe(with: cell.speakerView, aspectMode: .letterBox, andResolution: ._Auto)
+                default:
+                    currentUserShareCanvas.subscribe(with: cell.speakerView, aspectMode: .panAndScan, andResolution: ._Auto)
+                }
+            }
+        default:
+            currentUserShareCanvas.unSubscribe(with: cell.speakerView)
+            activeSharer = nil
+            setActiveSpeaker(with: activeSpeaker)
+        }
     }
     
     public func isActiveSpeakerGalleryCameraOn(index: Int) -> Bool {

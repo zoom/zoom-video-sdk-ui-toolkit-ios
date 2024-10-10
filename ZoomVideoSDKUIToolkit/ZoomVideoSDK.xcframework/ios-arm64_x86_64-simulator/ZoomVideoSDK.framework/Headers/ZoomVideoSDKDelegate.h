@@ -21,6 +21,7 @@
 #import <ZoomVideoSDK/ZoomVideoSDKLiveStreamHelper.h>
 #import <ZoomVideoSDK/ZoomVideoSDKUserHelper.h>
 #import <ZoomVideoSDK/ZoomVideoSDKLiveTranscriptionHelper.h>
+#import <ZoomVideoSDK/ZoomVideoSDKFileTranserHandle.h>
 
 @class ZoomVideoSDKRawDataPipe;
 @class ZoomVideoSDKVideoCanvas;
@@ -41,7 +42,13 @@
 /*!
  @brief Callback: Invoked when the current user leaves the session.
  */
-- (void)onSessionLeave;
+- (void)onSessionLeave DEPRECATED_MSG_ATTRIBUTE("use onSessionLeave: instead");
+
+/*!
+ @brief Invoked when the current user leaves the session with reason.
+ @param reason Leave session reason. See [ZoomVideoSDKSessionLeaveReason] for more information.
+ */
+- (void)onSessionLeave:(ZoomVideoSDKSessionLeaveReason)reason;
 
 /*!
  @brief Callback: Invoked when errors occur.
@@ -338,6 +345,33 @@
  @param view The view that failed to subscribe.
  */
 - (void)onShareCanvasSubscribeFail:(ZoomVideoSDKSubscribeFailReason)failReason user:(ZoomVideoSDKUser *_Nullable)user view:(UIView *_Nullable)view;
+
+/**
+ @brief Invoked when send file status make change.
+ @param file The class to sendfile object.
+ @param status The stauts of file transfer.
+ */
+- (void)onSendFileStatus:(ZoomVideoSDKSendFile * _Nullable)file status:(ZoomVideoSDKFileTransferStatus)status;
+
+/**
+ @brief Invoked when send file status make change.
+ @param file The class to receive file object.
+ @param status The stauts of file transfer.
+ */
+- (void)onReceiveFileStatus:(ZoomVideoSDKReceiveFile * _Nullable)file status:(ZoomVideoSDKFileTransferStatus)status;
+
+/**
+ @brief Callback event of video alpha channel mode changes.
+ @param isAlphaChannelOn True means that alpha channel mode is on, otherwise off.
+ */
+- (void)onVideoAlphaChannelStatusChanged:(BOOL)isAlphaChannelOn;
+
+/**
+ * @brief Callback event of spotlighted video user changes.
+ * @param videoHelper The pointer of video helper object.
+ * @param userList List of users who has been spotlighted.
+ */
+- (void)onSpotlightVideoChanged:(ZoomVideoSDKVideoHelper * _Nullable)videoHelper userList:(NSArray <ZoomVideoSDKUser *>* _Nullable)userList;
 
 @end
 

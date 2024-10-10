@@ -206,7 +206,7 @@ class UserManager {
     
     public func assignNewHost(at index: Int, _ completion: @escaping (_ success: Bool) -> Void) {
         let user = remoteUsersList[index]
-        if let success = ZoomVideoSDK.shareInstance()?.getUserHelper().makeHost(user), success {
+        if let success = ZoomVideoSDK.shareInstance()?.getUserHelper()?.makeHost(user), success {
             completion(true)
         } else {
             completion(false)
@@ -324,7 +324,7 @@ class UserManager {
     private func makeSelectedUserHost() {
         sheetView.dismiss()
         userControlEntry = .MakeHost
-        let result = ZoomVideoSDK.shareInstance()?.getUserHelper().makeHost(selectedUser) ?? false
+        let result = ZoomVideoSDK.shareInstance()?.getUserHelper()?.makeHost(selectedUser) ?? false
         if result {
             // Do nothing as onUserHostChanged will be called
         } else {
@@ -348,10 +348,10 @@ class UserManager {
         var error: UIToolkitError
         
         if selectedUser.isManager() {
-            result = ZoomVideoSDK.shareInstance()?.getUserHelper().revokeManager(selectedUser) ?? false
+            result = ZoomVideoSDK.shareInstance()?.getUserHelper()?.revokeManager(selectedUser) ?? false
             error = .RevokeManagerFailed
         } else {
-            result = ZoomVideoSDK.shareInstance()?.getUserHelper().makeManager(selectedUser) ?? false
+            result = ZoomVideoSDK.shareInstance()?.getUserHelper()?.makeManager(selectedUser) ?? false
             error = .GrantManagerFailed
         }
         
@@ -401,7 +401,7 @@ class UserManager {
     }
 
     private func removeFromSession() {
-        let result = ZoomVideoSDK.shareInstance()?.getUserHelper().remove(selectedUser) ?? false
+        let result = ZoomVideoSDK.shareInstance()?.getUserHelper()?.remove(selectedUser) ?? false
         if result {
             Toast.show(message: "\(selectedUser.getName() ?? "Nil") has been removed from session.")
         } else {

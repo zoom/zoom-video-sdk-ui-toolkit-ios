@@ -283,7 +283,6 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
                         break
                     }
                 } else if currentSessionSetting == .Sharing {
-                    // TODO: Screen Sharing not in first release
                     cell.switch.isOn = false
                     cell.switch.isEnabled = false
                 } else if currentSessionSetting == .VirtualBackground {
