@@ -28,6 +28,8 @@ The use of this UI Took Kit is subject to the [Video SDK terms of service](https
 
 Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapod. The current branch you are viewing right now is the *main* branch which consists of all 5 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, ZoomVideoSDKScreenShare, CptShare, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background or screen sharing features, you can use the *essential* branch instead of the *main* branch.
 
+For screen sharing to works, you will need to follow closely on our documentation on [Screen Sharing's Broadcast the device screen](https://developers.zoom.us/docs/video-sdk/ios/share/#broadcast-the-device-screen). Do take note that the CptShare.xcframework is already in the ZoomVideoSDKUIToolkit-iOS library so you do not need to add it separately as it has already been taken care of but you do still need to add the ZoomVideoSDKScreenShare library to your Broadcast Extension target.
+
 ```
 https://github.com/zoom/videosdk-ui-toolkit-ios.git
 ```
