@@ -24,7 +24,7 @@ The use of this UI Took Kit is subject to the [Video SDK terms of service](https
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapods. The current branch you are viewing right now is the *main* branch which consists of all 3 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background feature, you can use the *essential* branch instead of the *main* branch.
+Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapods. The current branch you are viewing right now is the *essential* branch which consists of all 3 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background feature, you can use the *essential* branch instead of the *main* branch.
 
 ```
 https://github.com/zoom/videosdk-ui-toolkit-ios.git
@@ -32,10 +32,10 @@ https://github.com/zoom/videosdk-ui-toolkit-ios.git
 
 ## Installing via CocoaPods
 
-The *cocoapod* branch contains the `podspec` for the Zoom Video SDK UI toolkit CocoaPod. To install, add the following target **with the specific repo branch "cocoapod"**:
+The *cocoapod-essential* branch contains the `podspec` for the Zoom Video SDK UI toolkit CocoaPod without screen sharing or virtual background. To install, add the following target **with the specific repo branch "cocoapod-essential"**:
 
 ```
-  pod 'ZoomVideoSDKUIToolkit', :git => 'https://github.com/zoom/videosdk-ui-toolkit-ios.git', :branch => 'cocoapod'
+  pod 'ZoomVideoSDKUIToolkit', :git => 'https://github.com/zoom/videosdk-ui-toolkit-ios.git', :branch => 'cocoapod-essential'
 ```
 
 ## Required App Permissions
@@ -98,6 +98,15 @@ extension YourViewController: UIToolkitDelegate {
         print("UIToolkitVC onViewDismissed")
     }
 }
+```
+
+### Note for essential
+
+The essential branch does not contain the Zoom SDKs required for screen sharing or for virtual background. To suppress the UI for them, pass an `InitParams` object with an array of `UIToolkitFeature` enums representing the features you want to support.
+
+```Swift
+let initParams = InitParams(features: [.Video, .Audio, .Users, .Chat, .Settings])
+let essentialVC = UIToolkitVC(sessionContext: sessionContext, initParams: initParams)
 ```
 
 See the [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) documentation for more.
