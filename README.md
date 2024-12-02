@@ -66,7 +66,7 @@ See the [Video SDK Auth Endpoint Sample](https://github.com/zoom/videosdk-sample
 
 After understanding the authorization process, we can simply add the Zoom Video SDK UI toolkit to your View Controller by following the 3 steps below.
 
-### Step 1. Create the SessionContext
+### Step 1. Create the SessionContext and InitParams
 
 Create the **SessionContext** that takes in the required parameters such as JWT, session name and username (display name). If your session requires a password, you can use the password parameter.
 
