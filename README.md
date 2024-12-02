@@ -1,6 +1,6 @@
 # Zoom Video SDK UI toolkit
 
-The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
+The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-toolkit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
 
 The UI toolkit enables you to instantly start using a core set of Video SDK features in your app, including:
 - Feature configuration
@@ -14,8 +14,12 @@ The UI toolkit enables you to instantly start using a core set of Video SDK feat
 - Virtual background
 - Portrait and landscape support
 - Screen sharing (full-screen)
+- Cloud Recording (Additional license required)
+- CRC Info and Invite (Additional license required)
 
-The use of this UI Toolkit is subject to the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
+These features are available in both the default and components UI.
+
+The use of this UI Toolkit is subject to the [Video SDK terms of service](https://www.zoom.com/en/trust/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
 
 ## Sample App
 
@@ -30,7 +34,7 @@ Visit the [Zoom Video SDK UI toolkit Sample Project](https://github.com/zoom/vid
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager (SPM) and Cocoapod. Do take note that there are 4 branches available and the details are as followed:
+The Zoom Video SDK UI toolkit is available in both the Swift Package Manager (SPM) and Cocoapod. Do take note that there are 4 branches available:
 - main: SPM with all features
 - essential: SPM with all features except for Virtual Background and Screen Share
 - cocoapod: Cocoapod with all features
@@ -72,11 +76,16 @@ let sessionContext = SessionContext(jwt: String, sessionName: String, username: 
 // OR if password is required
 let sessionContext = SessionContext(jwt: String, sessionName: String, sessionPassword: String?, username: String)
 
-// By default the UI Toolkit comes with all available features (with some features require additional license). If you will like to only use some of these features, you will need to add the features you want under the features parameter.
-let sessionContext  = SessionContext(jwt: String, sessionName: String, username: String), initParams: InitParams(features: [UIToolkitFeature]?))
+/*
+ Under the InitParams, all parameters are optional:
+ 1. If your session allows screen sharing, you will need to add the App Group ID parameter,
+ 2. By default the UI Toolkits comes with all available features (with some features require additional license). If you will like to only use some of these features, you will need to add the features you want under the features parameter.
+ 3. If your session allows and can perform cloud recording, you can add in a customized consent message.
+ */
+let sessionContext  = SessionContext(jwt: String, sessionName: String, username: String), initParams: InitParams(appGroupId: String?, features: [UIToolkitFeature]?, recordingConsentMessage: String?))
 ```
 
-### Step 2. Create the Zoom Video View Controller and present it
+### Step 2A. (Default UI) Create the Zoom Video View Controller and present it
 
 Create the **UIToolkitVC** that takes in the **sessionContext** and present it.
 
@@ -87,6 +96,10 @@ vc.modalPresentationStyle = .fullScreen
 present(toolkitVC, animated: true)
 ```
 
+### Step 2B. (Component UI) 
+
+Refer to our [documentation](https://developers.zoom.us/docs/video-sdk/ios/ui-toolkit/).
+
 ### Step 3. Delegate
 
 There is a delegate class **UIToolkitDelegate** which consists of important callbacks such as error, view is loaded and dismissed.
@@ -94,20 +107,35 @@ There is a delegate class **UIToolkitDelegate** which consists of important call
 ```Swift
 extension YourViewController: UIToolkitDelegate {
     func onError(_ errorType: UIToolkitError) {
-        print("UIToolkitVC onError: \(errorType.rawValue) -> \(errorType.description)")
+        print("Sample VC onError Callback: \(errorType.rawValue) -> \(errorType.description)")
     }
     
+    /*
+     Default UI
+     */
     func onViewLoaded() {
-        print("UIToolkitVC onViewLoaded")
+        print("Sample VC onViewLoaded")
     }
     
     func onViewDismissed() {
-        print("UIToolkitVC onViewDismissed")
+        print("Sample VC onViewDismissed")
+    }
+    
+    /*
+     Component UI
+     */
+    func startJoinSessionSuccessed() {
+        print("Sample VC Start/Join Session Successfully")
+        performSegue(withIdentifier: "goCustomVC", sender: nil)
+    }
+    
+    func leaveSession(reason: ZoomVideoSDKSessionLeaveReason) {
+        print("Sample VC Left Session, reason: \(reason)")
     }
 }
 ```
 
-See the [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) documentation for more.
+See the [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-toolkit/) documentation for more.
 
 ## Need help?
 
