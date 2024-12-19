@@ -94,8 +94,9 @@ let sessionContext = SessionContext(jwt: String, sessionName: String, sessionPas
  1. If your session allows screen sharing, you will need to add the App Group ID parameter,
  2. By default the UI Toolkits comes with all available features (with some features require additional license). If you will like to only use some of these features, you will need to add the features you want under the features parameter.
  3. If your session allows and can perform cloud recording, you can add in a customized consent message.
+ 4. If your session allows and can perform live streaming, you can add in a customized consent message.
  */
-let sessionContext  = SessionContext(jwt: String, sessionName: String, username: String), initParams: InitParams(appGroupId: String?, features: [UIToolkitFeature]?, recordingConsentMessage: String?))
+let sessionContext  = SessionContext(jwt: String, sessionName: String, username: String), initParams: InitParams(appGroupId: String?, features: [UIToolkitFeature]?, recordingConsentMessage: String?, liveStreamConsentMessage: liveStreamingConsentMessage))
 ```
 
 ### Step 2A. (Default UI) Create the Zoom Video View Controller and present it
