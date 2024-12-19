@@ -1,42 +1,61 @@
 # Zoom Video SDK UI toolkit
 
-The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
+The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-toolkit/) is a prebuilt video chat user interface powered by the Zoom Video SDK.
 
 The UI toolkit enables you to instantly start using a core set of Video SDK features in your app, including:
+- Feature configuration
 - Join and leave sessions
 - Video on or off
 - Front or back camera
 - Mute and unmute
 - Session chat (group and private)
 - Active speaker and gallery view
-- Participant management (by host and manager roles)
+- Participant management (with host and manager role)
 - Virtual background
-- Portrait and Landscape support
+- Portrait and landscape support
+- Screen share (full-screen)
+- Cloud Recording (Additional license required)
+- Live Streaming Support
+- CRC Info and Invite (Additional license required)
 
-The use of this UI Took Kit is subject to the [Video SDK terms of service](https://explore.zoom.us/en/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
+These features are available in both the default and components UI.
+
+The use of this UI Took Kit is subject to the [Video SDK terms of service](https://www.zoom.com/en/trust/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
+
+## Sample App
+
+Visit the [Zoom Video SDK UI toolkit Sample Project](https://github.com/zoom/videosdk-ui-toolkit-ios-sample). 
 
 ## Prerequisites
 
 - Xcode
-- A physical 64-bit iOS device (iPhone or iPad) with iOS version 11.0+
+- A physical 64-bit iOS device (iPhone or iPad) with iOS version 13.0+
 - A validated provisioning profile certificate
 - A [Video SDK developer account](https://developers.zoom.us/docs/video-sdk/developer-accounts/) with credentials
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager and Cocoapods. The current branch you are viewing right now is the *essential* branch which consists of all 3 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background feature, you can use the *essential* branch instead of the *main* branch.
+Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager (SPM) and Cocoapod.
+
+For SPM, there are 2 branches available:
+- main: SPM with all features
+- essential: SPM with all features except for Virtual Background and Screen Share.
+
+For Cocoapod:
 
 ```
-https://github.com/zoom/videosdk-ui-toolkit-ios.git
+    // All features
+    pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDK'
+    pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit'
+    pod 'ZoomVSDKUIToolkitiOS/CptShare'
+    pod 'ZoomVSDKUIToolkitiOS/zoomcml'
+    
+    // Essential features without Virtual Background and Screen Share
+    pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDK'
+    pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkitEssential'
 ```
 
-## Installing via CocoaPods
-
-The *cocoapod-essential* branch contains the `podspec` for the Zoom Video SDK UI toolkit CocoaPod without screen sharing or virtual background. To install, add the following target **with the specific repo branch "cocoapod-essential"**:
-
-```
-  pod 'ZoomVideoSDKUIToolkit', :git => 'https://github.com/zoom/videosdk-ui-toolkit-ios.git', :branch => 'cocoapod-essential'
-```
+For screen sharing to works, you will need to follow closely on our documentation on [Screen Sharing's Broadcast the device screen](https://developers.zoom.us/docs/video-sdk/ios/share/#broadcast-the-device-screen). Do take note that the CptShare.xcframework is already in the ZoomVideoSDKUIToolkit-iOS library so you do not need to add it separately as it has already been taken care of but you do still need to add the ZoomVideoSDKScreenShare library to your Broadcast Extension target.
 
 ## Required App Permissions
 
@@ -58,7 +77,7 @@ See the [Video SDK Auth Endpoint Sample](https://github.com/zoom/videosdk-sample
 
 After understanding the authorization process, we can simply add the Zoom Video SDK UI toolkit to your View Controller by following the 3 steps below.
 
-### Step 1. Create the SessionContext
+### Step 1. Create the SessionContext and InitParams
 
 Create the **SessionContext** that takes in the required parameters such as JWT, session name and username (display name). If your session requires a password, you can use the password parameter.
 
@@ -67,9 +86,17 @@ let sessionContext = SessionContext(jwt: String, sessionName: String, username: 
 
 // OR if password is required
 let sessionContext = SessionContext(jwt: String, sessionName: String, sessionPassword: String?, username: String)
+
+/*
+ Under the InitParams, all parameters are optional:
+ 1. If your session allows screen sharing, you will need to add the App Group ID parameter,
+ 2. By default the UI Toolkits comes with all available features (with some features require additional license). If you will like to only use some of these features, you will need to add the features you want under the features parameter.
+ 3. If your session allows and can perform cloud recording, you can add in a customized consent message.
+ */
+let sessionContext  = SessionContext(jwt: String, sessionName: String, username: String), initParams: InitParams(appGroupId: String?, features: [UIToolkitFeature]?, recordingConsentMessage: String?))
 ```
 
-### Step 2. Create the Zoom Video View Controller and present it
+### Step 2A. (Default UI) Create the Zoom Video View Controller and present it
 
 Create the **UIToolkitVC** that takes in the **sessionContext** and present it.
 
@@ -80,6 +107,10 @@ vc.modalPresentationStyle = .fullScreen
 present(toolkitVC, animated: true)
 ```
 
+### Step 2B. (Component UI) 
+
+Refer to our [documentation](https://developers.zoom.us/docs/video-sdk/ios/ui-toolkit/).
+
 ### Step 3. Delegate
 
 There is a delegate class **UIToolkitDelegate** which consists of important callbacks such as error, view is loaded and dismissed.
@@ -87,26 +118,32 @@ There is a delegate class **UIToolkitDelegate** which consists of important call
 ```Swift
 extension YourViewController: UIToolkitDelegate {
     func onError(_ errorType: UIToolkitError) {
-        print("UIToolkitVC onError: \(errorType.rawValue) -> \(errorType.description)")
+        print("Sample VC onError Callback: \(errorType.rawValue) -> \(errorType.description)")
     }
     
+    /*
+     Default UI
+     */
     func onViewLoaded() {
-        print("UIToolkitVC onViewLoaded")
+        print("Sample VC onViewLoaded")
     }
     
     func onViewDismissed() {
-        print("UIToolkitVC onViewDismissed")
+        print("Sample VC onViewDismissed")
+    }
+    
+    /*
+     Component UI
+     */
+    func startJoinSessionSuccessed() {
+        print("Sample VC Start/Join Session Successfully")
+        performSegue(withIdentifier: "goCustomVC", sender: nil)
+    }
+    
+    func leaveSession(reason: ZoomVideoSDKSessionLeaveReason) {
+        print("Sample VC Left Session, reason: \(reason)")
     }
 }
-```
-
-### Note for essential
-
-The essential branch does not contain the Zoom SDKs required for screen sharing or for virtual background. To suppress the UI for them, pass an `InitParams` object with an array of `UIToolkitFeature` enums representing the features you want to support.
-
-```Swift
-let initParams = InitParams(features: [.Video, .Audio, .Users, .Chat, .Settings])
-let essentialVC = UIToolkitVC(sessionContext: sessionContext, initParams: initParams)
 ```
 
 See the [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui-kit/) documentation for more.
