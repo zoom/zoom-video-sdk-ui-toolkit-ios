@@ -15,6 +15,7 @@ The UI toolkit enables you to instantly start using a core set of Video SDK feat
 - Portrait and landscape support
 - Screen sharing (full-screen)
 - Cloud Recording (Additional license required)
+- Live Streaming Support
 - CRC Info and Invite (Additional license required)
 
 These features are available in both the default and components UI.
@@ -28,25 +29,35 @@ Visit the [Zoom Video SDK UI toolkit Sample Project](https://github.com/zoom/vid
 ## Prerequisites
 
 - Xcode
-- A physical 64-bit iOS device (iPhone or iPad) with iOS version 11.0+
+- A physical 64-bit iOS device (iPhone or iPad) with iOS version 13.0+
 - A validated provisioning profile certificate
 - A [Video SDK developer account](https://developers.zoom.us/docs/video-sdk/developer-accounts/) with credentials
 
 ## Installation
 
-Currently, the Zoom Video SDK UI toolkit is available in Swift Package Manager (SPM) and Cocoapod. Do take note that there are 4 branches available and the details are as followed:
+The Zoom Video SDK UI toolkit is available in Swift Package Manager (SPM) and Cocoapod.
+
+For SPM, there are 2 branches available:
 - main: SPM with all features
-- essential: SPM with all features except for Virtual Background and Screen Share
-- cocoapod: Cocoapod with all features
-- cocoapod-essential: Cocoapod with all features except for Virtual Background and Screen Share
+- essential: SPM with all features except for Virtual Background and Screen Share.
 
 The current branch you are viewing right now is the *main* branch which consists of all 5 xcframeworks (ZoomVideoSDK, ZoomVideoSDKUIToolkit, ZoomVideoSDKScreenShare, CptShare, and zoomcml) with all the UI toolkit features listed earlier. However, if you do not need the virtual background or screen sharing features, you can use the *essential* branch instead of the *main* branch.
 
-For screen sharing to works, you will need to follow closely on our documentation on [Screen Sharing's Broadcast the device screen](https://developers.zoom.us/docs/video-sdk/ios/share/#broadcast-the-device-screen). Do take note that the CptShare.xcframework is already in the ZoomVideoSDKUIToolkit-iOS library so you do not need to add it separately as it has already been taken care of but you do still need to add the ZoomVideoSDKScreenShare library to your Broadcast Extension target.
+For Cocoapod:
 
 ```
-https://github.com/zoom/videosdk-ui-toolkit-ios.git
+// All features
+pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDK'
+pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit'
+pod 'ZoomVSDKUIToolkitiOS/CptShare'
+pod 'ZoomVSDKUIToolkitiOS/zoomcml'
+    
+// Essential features without Virtual Background and Screen Share
+pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDK'
+pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkitEssential'
 ```
+
+For screen sharing to works, you will need to follow closely on our documentation on [Screen Sharing's Broadcast the device screen](https://developers.zoom.us/docs/video-sdk/ios/share/#broadcast-the-device-screen). Do take note that the CptShare.xcframework is already in the ZoomVideoSDKUIToolkit-iOS library so you do not need to add it separately as it has already been taken care of but you do still need to add the ZoomVideoSDKScreenShare library to your Broadcast Extension target.
 
 ## Required App Permissions
 
