@@ -25,7 +25,7 @@ let package = Package(
             name: "ZoomVideoSDK",
             path: "ZoomVideoSDK.xcframework"),
         .binaryTarget(
-            name: "ZoomVideoSDKUIToolkit",
+            name: "ZoomVideoSDKUIToolkitEssential",
             path: "ZoomVideoSDKUIToolkitEssential.xcframework")
     ]
 )
