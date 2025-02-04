@@ -5,6 +5,7 @@ The [Zoom Video SDK UI toolkit](https://developers.zoom.us/docs/video-sdk/ios/ui
 The UI toolkit enables you to instantly start using a core set of Video SDK features in your app, including:
 - Feature configuration
 - Join and leave sessions
+- Audio and video preview
 - Video on or off
 - Front or back camera
 - Mute and unmute
@@ -14,13 +15,15 @@ The UI toolkit enables you to instantly start using a core set of Video SDK feat
 - Virtual background
 - Portrait and landscape support
 - Screen sharing (full-screen)
-- Cloud Recording (Additional license required)
-- Live Streaming Support
-- CRC Info and Invite (Additional license required)
+- Cloud recording (additional license required)
+- Live streaming support
+- CRC info and invite (Additional license required)
+- PSTN call in and out (Additional license required)
+- Live transcription and translation support (Additional license required)
 
 These features are available in both the default and components UI.
 
-The use of this UI Toolkit is subject to the [Video SDK terms of service](https://www.zoom.com/en/trust/video-sdk-terms/). Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
+The use of this UI Toolkit is subject to the [Video SDK terms of service](https://www.zoom.com/en/trust/video-sdk-terms/). Copyright 2025 Zoom Video Communications, Inc. All rights reserved.
 
 ## Sample App
 
@@ -159,4 +162,4 @@ If you're looking for help, try [Developer Support](https://devsupport.zoom.us/h
 
 ---
 
-Copyright 2024 Zoom Video Communications, Inc. All rights reserved.
+Copyright 2025 Zoom Video Communications, Inc. All rights reserved.
