@@ -1,0 +1,4 @@
+framework module ZoomVideoSDKUIToolkitEssential {
+  header "ZoomVideoSDKUIToolkitEssential-Swift.h"
+  requires objc
+}
